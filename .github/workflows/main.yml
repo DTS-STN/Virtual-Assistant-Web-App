@@ -1,0 +1,54 @@
+# This workflow builds and deploys the site
+
+name: Publish Static Web App to Azure Blob Storage
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build-and-deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
+      # Install Node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      # Use Vite to build the website 
+      - name: Vite build website
+        run: |
+          npm install
+          npm run build
+        
+      # Take the build files and send them to Azure Store  
+      - name: Deploy to Azure Blob Storage
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.27.0
+          inlineScript: |
+            az storage blob sync -c '$web' -s 'dist' --connection-string '${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}'
+      
+      # Purge the CDN Endpoint 
+      #- name: Purge CDN endpoint
+      #  uses: azure/CLI@v1
+      #  with:
+      #    azcliversion: 2.27.0
+      #    inlineScript: |
+      #      az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
