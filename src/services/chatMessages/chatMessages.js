@@ -12,9 +12,10 @@ const initConnection = (messageRecievedHandler, userName) => {
       directLineMessageRecievedHandler = messageRecievedHandler;
     directLine = new DirectLine({
       secret: "XZZoWUQ-zWo.7c1_UyimRyF9homvO7InkGRPQjKfmT9BDLFN-y3WgaI",
-      conversationStartProperties: { /* optional: properties to send to the bot on conversation start */
-        locale: 'en-US'
-      }
+      conversationStartProperties: {
+        /* optional: properties to send to the bot on conversation start */
+        locale: "en-US",
+      },
     });
     receiveMessageHandler();
 
@@ -47,7 +48,7 @@ const sendMessage = (msg, userName, lang) => {
         from: { id: "UserId", name: userName }, // (from.name is optional)
         type: "message",
         text: msg,
-        locale: lang,
+        locale: "en",
       })
       .subscribe(
         (id) => resolve(id),
