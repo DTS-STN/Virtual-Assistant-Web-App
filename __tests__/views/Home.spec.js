@@ -8,7 +8,7 @@ import emails from "../../src/store/modules/emails";
 jest.mock("../../src/store/modules/emails");
 
 describe("Test Home.vue view", () => {
-  it("Check for h1 exists", () => {
+  it("Check for main exists", () => {
     const store = createStore({
       modules: {
         chatMessages,
@@ -25,8 +25,7 @@ describe("Test Home.vue view", () => {
       },
     });
 
-    const h1 = wrapper.find("h1");
-
-    expect(h1.exists()).toBe(true);
+    const main = wrapper.find("main");
+    expect(main.exists()).toBe(true);
   });
 });
