@@ -12,7 +12,9 @@ const initConnection = (messageRecievedHandler, userName) => {
       directLineMessageRecievedHandler = messageRecievedHandler;
     directLine = new DirectLine({
       secret: "XZZoWUQ-zWo.7c1_UyimRyF9homvO7InkGRPQjKfmT9BDLFN-y3WgaI",
-      locale: "en-CA"
+      conversationStartProperties: { /* optional: properties to send to the bot on conversation start */
+        locale: 'en-US'
+      }
     });
     receiveMessageHandler();
 
