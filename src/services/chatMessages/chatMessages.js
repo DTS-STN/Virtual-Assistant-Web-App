@@ -6,15 +6,16 @@ import { DirectLine } from "botframework-directlinejs";
  * @param userName user name sending the message.
  */
 
-const initConnection = (messageRecievedHandler, userName) => {
+const initConnection = (messageRecievedHandler, userName, lang) => {
   return new Promise((resolve, reject) => {
     if (messageRecievedHandler)
       directLineMessageRecievedHandler = messageRecievedHandler;
+    if (lang === "fr")
+      lang = "fr-ca";
     directLine = new DirectLine({
       secret: "XZZoWUQ-zWo.7c1_UyimRyF9homvO7InkGRPQjKfmT9BDLFN-y3WgaI",
       conversationStartProperties: {
-        /* optional: properties to send to the bot on conversation start */
-        locale: "en-US",
+        locale: lang,
       },
     });
     receiveMessageHandler();
@@ -41,6 +42,8 @@ let directLineMessageRecievedHandler = (userName, messageText) => {
 };
 
 const sendMessage = (msg, userName, lang) => {
+  if (lang === "fr")
+    lang = "fr-ca";
   return new Promise((resolve, reject) => {
     directLine
       .postActivity({
@@ -48,7 +51,7 @@ const sendMessage = (msg, userName, lang) => {
         from: { id: "UserId", name: userName }, // (from.name is optional)
         type: "message",
         text: msg,
-        locale: "en",
+        locale: lang,
       })
       .subscribe(
         (id) => resolve(id),

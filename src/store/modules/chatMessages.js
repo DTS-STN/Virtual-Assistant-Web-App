@@ -72,7 +72,8 @@ const actions = {
     // Add .then() if needed.
     ChatMessageService.initConnection(
       directLineMessageRecievedHandler,
-      "userName"
+      "userName",
+      i18n.global.locale.value
     )
       .then((conversationId) => {
         commit("addChatConversation", {
