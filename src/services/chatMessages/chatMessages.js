@@ -11,7 +11,7 @@ const initConnection = (messageRecievedHandler, userName) => {
     if (messageRecievedHandler)
       directLineMessageRecievedHandler = messageRecievedHandler;
     directLine = new DirectLine({
-      secret: "8C7yTNIFduc.8WLczjk-iUmfQPz5fTKGYSvGTWcThDl2_svknkvOo2c",
+      secret: "XZZoWUQ-zWo.7c1_UyimRyF9homvO7InkGRPQjKfmT9BDLFN-y3WgaI",
     });
     receiveMessageHandler();
 
