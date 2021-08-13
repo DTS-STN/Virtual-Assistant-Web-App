@@ -153,8 +153,8 @@ export default {
     }
 
     function scrollToBottom() {
-      const list = document.querySelector("#conversationWindow");
-      list.scrollTop = list.scrollHeight;
+      conversationWindow.value.scrollTop =
+        conversationWindow.value.scrollHeight;
     }
 
     watch(chatMessage, async () => {
