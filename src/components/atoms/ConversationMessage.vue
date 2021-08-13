@@ -64,7 +64,9 @@ export default {
 </script>
 <style scoped>
 /* Chat bubble animations*/
-.userMessage,
+
+/* Animation commented out since its janky with the scroll to bottom of chat messages.*/
+/* .userMessage,
 .botMessage {
   animation: slideUp 0.1s ease-in;
 }
@@ -76,5 +78,5 @@ export default {
   to {
     transform: none;
   }
-}
+} */
 </style>
