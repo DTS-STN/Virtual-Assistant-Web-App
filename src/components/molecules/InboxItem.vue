@@ -39,20 +39,20 @@
       >
         {{ inboxItem.senderName }}
       </h2>
+      <span class="sr-only">
+        {{
+          (inboxItem.selected === true
+            ? $t("currentlySelected")
+            : $t("accessInboxItem")) +
+          (inboxItem.dayRead ? $t("alreadyRead") : $t("unread")) +
+          "." +
+          $t("teaserText") +
+          ":" +
+          (inboxItem.teaserText ? inboxItem.teaserText : $t("noMessages"))
+        }}
+      </span>
       <span
         :id="'teaser-text-' + indexNum"
-        :aria-label="
-          (inboxItem.selected === true
-            ? $t('currentlySelected')
-            : $t('accessInboxItem')) +
-          (inboxItem.dayRead ? $t('alreadyRead') : $t('unread')) +
-          '.' +
-          $t('teaserText') +
-          ':' +
-          inboxItem.teaserText
-            ? inboxItem.teaserText
-            : $t('noMessages')
-        "
         :class="[
           !inboxItem.dayRead ? 'font-body' : 'font-heading font-light',
           'text-sm md:text-lg truncate overflow-ellipsis text-gray-dark pl-1',

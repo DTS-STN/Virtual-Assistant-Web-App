@@ -3,8 +3,10 @@
     v-if="dayRead"
     class="flex-auto items-baseline h-16 w-16 md:h-20 md:w-20"
   >
+    <span class="sr-only">
+      {{ $t("msgSentOn") + " " + dayRead }}
+    </span>
     <span
-      :aria-label="$t('msgSentOn') + ' ' + dayRead"
       class="
         font-heading font-light
         text-sm
