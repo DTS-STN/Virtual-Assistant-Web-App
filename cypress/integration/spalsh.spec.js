@@ -10,6 +10,16 @@ describe("home page", () => {
     it("landing page loaded", () => {
       cy.url().should("contains", "/");
     });
+
+    it("Splash screen English button goes to en page", () => {
+        cy.get('[data-cy=english-button]').click();
+        cy.url().should("eq", "http://localhost:3000/en");
+      });
+
+      it("Splash screen French button goes to fr page", () => {
+        cy.get('[data-cy=french-button]').click();
+        cy.url().should("eq", "http://localhost:3000/fr");
+      });
   
 
   });

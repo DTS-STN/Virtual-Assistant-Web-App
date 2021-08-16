@@ -18,7 +18,8 @@
     "lint:formatting": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,md,vue}\" \"__tests__/**/*.{js,jsx,ts,tsx,json,md,vue}\"",
     "test": "jest",
     "test:e2e": "start-server-and-test dev http-get://localhost:3000 cypress",
-    "cypress": "cypress run"
+    "cypress": "cypress run",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@babel/core": "^7.14.8",
