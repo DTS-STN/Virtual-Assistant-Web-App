@@ -41,16 +41,24 @@
         <!-- end lang toggle desktop -->
 
         <!-- start gc logo with mobile lang toggle -->
-        <!-- src={language === "en" ? "../../assets/sig-blk-en.svg" : "../../assets/sig-blk-fr.svg"} -->
         <div
           className="flex flex-col sm:flex-row container w-full mx-auto py-1 px-5 justify-between items-center"
         >
           <div className="flex flex-row items-center justify-between">
             <img
+              v-if="changeLanguageTo === 'fr'"
               className="h-5 xs:h-7 sm:h-8 md:h-9 mx-3 xs:mx-0"
               src="../../assets/sig-blk-en.svg"
               :alt="$t('canadaLogoHeader')"
             />
+
+            <img
+              v-else
+              className="h-5 xs:h-7 sm:h-8 md:h-9 mx-3 xs:mx-0"
+              src="../../assets/sig-blk-fr.svg"
+              :alt="$t('canadaLogoHeader')"
+            />
+
             <a
               id="lang-toggle-small"
               class="

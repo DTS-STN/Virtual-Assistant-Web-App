@@ -16,9 +16,10 @@
         w-full
         text-center
         pt-4
+        uppercase
       "
     >
-      {{ dayRead }}.
+      {{ dayRead }}
     </h3>
   </div>
   <div
