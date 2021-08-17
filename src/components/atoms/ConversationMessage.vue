@@ -9,9 +9,11 @@
     @keydown.prevent.exact.tab="nextElement($event)"
     aria-live="polite"
   >
-    <span class="sr-only"> </span>
+    <span class="sr-only">
+      {{ (isUser ? $t("you") : senderName) + $t("said") + text }}
+    </span>
     <span
-      :aria-label="(isUser ? $t('you') : senderName) + $t('said') + text"
+      :aria-hidden="true"
       :class="[
         !isUser
           ? 'bg-gray-infolt mr-10'

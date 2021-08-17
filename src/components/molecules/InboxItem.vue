@@ -45,13 +45,14 @@
             ? $t("currentlySelected")
             : $t("accessInboxItem")) +
           (inboxItem.dayRead ? $t("alreadyRead") : $t("unread")) +
-          "." +
+          ". " +
           $t("teaserText") +
-          ":" +
+          ": " +
           (inboxItem.teaserText ? inboxItem.teaserText : $t("noMessages"))
         }}
       </span>
       <span
+        aria-hidden="true"
         :id="'teaser-text-' + indexNum"
         :class="[
           !inboxItem.dayRead ? 'font-body' : 'font-heading font-light',

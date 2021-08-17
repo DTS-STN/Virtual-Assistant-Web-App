@@ -7,6 +7,7 @@
       {{ $t("msgSentOn") + " " + dayRead }}
     </span>
     <span
+      aria-hidden="true"
       class="
         font-heading font-light
         text-sm
