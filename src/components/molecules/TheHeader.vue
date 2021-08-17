@@ -41,26 +41,23 @@
         <!-- end lang toggle desktop -->
 
         <!-- start gc logo with mobile lang toggle -->
-        <!-- src="../../assets/sig-blk-en.svg" -->
-        <!-- src={language === "en" ? "../../assets/sig-blk-en.svg" : "../../assets/sig-blk-fr.svg"} -->
         <div
           className="flex flex-col sm:flex-row container w-full mx-auto py-1 px-5 justify-between items-center"
         >
           <div className="flex flex-row items-center justify-between">
-            <div v-if="changeLanguageTo === 'fr'">
-              <img
-                className="h-5 xs:h-7 sm:h-8 md:h-9 mx-3 xs:mx-0"
-                src="../../assets/sig-blk-en.svg"
-                :alt="$t('canadaLogoHeader')"
-              />
-            </div>
-            <div v-else>
-              <img
-                className="h-5 xs:h-7 sm:h-8 md:h-9 mx-3 xs:mx-0"
-                src="../../assets/sig-blk-fr.svg"
-                :alt="$t('canadaLogoHeader')"
-              />
-            </div>
+            <img
+              v-if="changeLanguageTo === 'fr'"
+              className="h-5 xs:h-7 sm:h-8 md:h-9 mx-3 xs:mx-0"
+              src="../../assets/sig-blk-en.svg"
+              :alt="$t('canadaLogoHeader')"
+            />
+
+            <img
+              v-else
+              className="h-5 xs:h-7 sm:h-8 md:h-9 mx-3 xs:mx-0"
+              src="../../assets/sig-blk-fr.svg"
+              :alt="$t('canadaLogoHeader')"
+            />
 
             <a
               id="lang-toggle-small"
@@ -128,9 +125,6 @@ export default {
       useI18n().locale.value == "fr" ? "en" : "fr"
     );
     return { changeLanguageTo };
-
-    const lang = computed(() => (useI18n().locale.value == "fr" ? "en" : "fr"));
-    return { lang };
   },
 };
 </script>
