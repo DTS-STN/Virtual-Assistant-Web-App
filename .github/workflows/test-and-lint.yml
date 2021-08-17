@@ -10,9 +10,17 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [15.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
       - name: Checkout 🔔
         uses: actions/checkout@v2
+      - name: "Building and Unit Tests Against Node"
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Install
         run: npm install
@@ -26,9 +34,6 @@ jobs:
         run: npm run lint
 
       - name: Unit Tests 🧪
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
         run: npm run test
         # env:
         #   CI: true
