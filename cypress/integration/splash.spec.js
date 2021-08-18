@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /// <reference types="Cypress" />
 
-describe("home page", () => {
+describe("Splash page", () => {
     beforeEach(() => {
       cy.visit("/");
     //   cy.injectAxe();
