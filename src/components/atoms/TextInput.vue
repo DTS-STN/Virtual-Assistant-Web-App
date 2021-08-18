@@ -79,7 +79,18 @@ export default {
         context.emit("add-message", this.text);
         text.value = "";
         checkSendBtnActive();
-        input.value.focus();
+
+        //check if we're on mobile view
+        if (
+          Math.max(
+            document.documentElement.clientWidth || 0,
+            window.innerWidth || 0
+          ) >= 640
+        ) {
+          input.value.focus();
+        } else {
+          input.value.blur();
+        }
       }
     }
     function sendBtnText(btnText) {
