@@ -25,7 +25,7 @@
   "msgSentOn": "This message was sent on:",
   "inboxFor": "Inbox for sender:",
   "teaserText": "Teaser text of latest message",
-  "currentlySelected": "This inbox item is currently selected and displayed (unless you are on mobile, please tap)",
+  "currentlySelected": "This inbox item is currently selected and displayed (unless you are on mobile, please tap) and is",
   "accessInboxItem": "Click or press enter to access this inbox item which is ",
   "alreadyRead": "already read ",
   "unread": "unread ",

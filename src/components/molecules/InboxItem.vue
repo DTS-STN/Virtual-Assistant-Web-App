@@ -39,29 +39,28 @@
       >
         {{ inboxItem.senderName }}
       </h2>
-      <span class="hidden" :id="'status-and-teaser-announcement-' + indexNum"
-        >{{
-          inboxItem.selected === true
+      <span class="sr-only">
+        {{
+          (inboxItem.selected === true
             ? $t("currentlySelected")
-            : $t("accessInboxItem") +
-              (inboxItem.dayRead ? $t("alreadyRead") : $t("unread"))
-        }}. {{ $t("teaserText") }}:</span
-      >
-      <h2
+            : $t("accessInboxItem")) +
+          (inboxItem.dayRead ? $t("alreadyRead") : $t("unread")) +
+          ". " +
+          $t("teaserText") +
+          ": " +
+          (inboxItem.teaserText ? inboxItem.teaserText : $t("noMessages"))
+        }}
+      </span>
+      <span
+        aria-hidden="true"
         :id="'teaser-text-' + indexNum"
-        :aria-labelledby="
-          'status-and-teaser-announcement-' +
-          indexNum +
-          ' teaser-text-' +
-          indexNum
-        "
         :class="[
           !inboxItem.dayRead ? 'font-body' : 'font-heading font-light',
           'text-sm md:text-lg truncate overflow-ellipsis text-gray-dark pl-1',
         ]"
       >
         {{ inboxItem.teaserText ? inboxItem.teaserText : $t("noMessages") }}
-      </h2>
+      </span>
     </div>
     <div>
       <read-notification
