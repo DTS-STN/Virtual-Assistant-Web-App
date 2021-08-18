@@ -33,8 +33,17 @@
         aria-live="polite"
       >
         <li>
-          <p class="text-center font-heading text-sm font-light text-gray-dark">
-            {{ $t("messageTime") }}
+          <p
+            class="
+              text-center
+              uppercase
+              font-heading
+              text-sm
+              font-light
+              text-gray-dark
+            "
+          >
+            {{ messageTimestamp }}
           </p>
         </li>
         <ConversationMessage
@@ -80,6 +89,7 @@ import TextInput from "../atoms/TextInput.vue";
 import { useStore } from "vuex";
 import { computed, ref, watch, nextTick } from "vue";
 import icons from "../../assets/icons.js";
+import { useI18n } from "vue-i18n";
 export default {
   name: "ConversationWindow",
   components: {
@@ -109,6 +119,20 @@ export default {
       return noMessages
         ? null
         : messages[messages.length - 1].suggestedActions?.actions;
+    });
+    const messageTimestamp = computed(() => {
+      const msgs = chatMessage.value.messages;
+      const lang = useI18n().locale.value;
+      const options = {
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+      };
+      if (msgs?.length >= 1) {
+        //create a timestamp using the oldest message sent by the bot
+        return new Date(msgs[0].timestamp).toLocaleString(lang, options);
+      }
+      return new Date().toLocaleString(lang, options); //return current time if no messages exist
     });
 
     function sendChatMessage(msg) {
@@ -175,6 +199,7 @@ export default {
       conversationWindow,
       focusOnInput,
       resetConversationWindow,
+      messageTimestamp,
     };
   },
 };
