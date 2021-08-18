@@ -20,6 +20,7 @@ const getters = {
       //dayRead will be unread if no value provided. The design currently accounts for only the weekday to be displayed
       let dayRead;
       const lastReadDate = item.lastRead ? new Date(item.lastRead) : null;
+      console.log(lastReadDate);
       const lastMessageReceivedDate = lastMessage?.receivedTime
         ? new Date(lastMessage.receivedTime)
         : null;
@@ -35,6 +36,12 @@ const getters = {
             weekday: "short",
           }
         );
+      } else if (
+        lastReadDate !== null &&
+        lastMessageReceivedDate !== null &&
+        lastReadDate < lastMessageReceivedDate
+      ) {
+        dayRead = undefined;
       } else if (lastReadDate !== null) {
         //to account for empty conversation/inbox item, so it doesn't remain always unread
         dayRead = lastReadDate.toLocaleDateString(i18n.global.locale.value, {
@@ -92,6 +99,9 @@ const getters = {
 
     return inboxItems;
   },
+  getSelectedInboxItemId(state) {
+    return state.selectedInboxItemId;
+  },
   getSelectedInboxItem(state, getters) {
     const selectedItem = getters.getInboxItems.find(
       (inboxItem) => inboxItem.id === state.selectedInboxItemId
@@ -103,8 +113,16 @@ const getters = {
     if (selectedItem) return selectedItem.type;
     return undefined;
   },
+  isMobile(state) {
+    return (
+      Math.max(
+        document.documentElement.clientWidth || 0,
+        window.innerWidth || 0
+      ) < 640
+    );
+  },
   isMobileDrawerOpen(state, getters) {
-    return state.mobileDrawerOpen;
+    return state.mobileDrawerOpen && getters.isMobile;
   },
   isLoaded(state, getters, rootState) {
     const chatMessagesLoaded = rootState.chatMessages.loaded;
