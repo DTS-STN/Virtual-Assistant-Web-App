@@ -10,8 +10,7 @@ const initConnection = (messageRecievedHandler, userName, lang) => {
   return new Promise((resolve, reject) => {
     if (messageRecievedHandler)
       directLineMessageRecievedHandler = messageRecievedHandler;
-    if (lang === "fr")
-      lang = "fr-ca";
+    if (lang === "fr") lang = "fr-ca";
     directLine = new DirectLine({
       secret: "XZZoWUQ-zWo.7c1_UyimRyF9homvO7InkGRPQjKfmT9BDLFN-y3WgaI",
       conversationStartProperties: {
@@ -42,8 +41,7 @@ let directLineMessageRecievedHandler = (userName, messageText) => {
 };
 
 const sendMessage = (msg, userName, lang) => {
-  if (lang === "fr")
-    lang = "fr-ca";
+  if (lang === "fr") lang = "fr-ca";
   return new Promise((resolve, reject) => {
     directLine
       .postActivity({

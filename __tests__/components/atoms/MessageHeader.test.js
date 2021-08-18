@@ -1,6 +1,7 @@
 import { shallowMount } from "@vue/test-utils";
 import MessageHeader from "../../../src/components/atoms/MessageHeader";
 import { createStore } from "vuex";
+import { i18n } from "../../../i18n";
 import inbox from "../../../src/store/modules/inbox";
 jest.mock("../../../src/store/modules/inbox");
 
@@ -23,6 +24,7 @@ describe("MessageHeader component", () => {
         provide: {
           store,
         },
+        plugins: [i18n],
       },
     });
     expect(wrapper.text()).toContain("Header Text");
@@ -34,6 +36,7 @@ describe("MessageHeader component", () => {
         provide: {
           store,
         },
+        plugins: [i18n],
       },
     });
     const backButton = wrapper.find("button");

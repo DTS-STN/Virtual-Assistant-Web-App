@@ -78,7 +78,7 @@ import ConversationFooter from "../atoms/ConversationFooter.vue";
 import MessageHeader from "../atoms/MessageHeader.vue";
 import TextInput from "../atoms/TextInput.vue";
 import { useStore } from "vuex";
-import { computed, ref } from "vue";
+import { computed, ref, watch, nextTick } from "vue";
 import icons from "../../assets/icons.js";
 export default {
   name: "ConversationWindow",
@@ -151,6 +151,16 @@ export default {
     function resetConversationWindow() {
       tabbable.value = -1;
     }
+
+    function scrollToBottom() {
+      conversationWindow.value.scrollTop =
+        conversationWindow.value.scrollHeight;
+    }
+
+    watch(chatMessage, async () => {
+      await nextTick();
+      setTimeout(scrollToBottom, 50);
+    });
 
     return {
       chatMessage,
