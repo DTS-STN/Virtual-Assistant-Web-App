@@ -43,7 +43,7 @@
               text-gray-dark
             "
           >
-            {{ messageTimestamp || $t("messageTime") }}
+            {{ messageTimestamp }}
           </p>
         </li>
         <ConversationMessage
@@ -122,18 +122,17 @@ export default {
     });
     const messageTimestamp = computed(() => {
       const msgs = chatMessage.value.messages;
+      const lang = useI18n().locale.value;
+      const options = {
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+      };
       if (msgs?.length >= 1) {
         //create a timestamp using the oldest message sent by the bot
-        return new Date(msgs[0].timestamp).toLocaleString(
-          useI18n().locale.value,
-          {
-            weekday: "short",
-            hour: "2-digit",
-            minute: "2-digit",
-          }
-        );
+        return new Date(msgs[0].timestamp).toLocaleString(lang, options);
       }
-      return ""; //return nothing if no messages exist
+      return new Date().toLocaleString(lang, options); //return current time if no messages exist
     });
 
     function sendChatMessage(msg) {
