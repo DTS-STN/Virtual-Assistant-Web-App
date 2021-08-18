@@ -20,7 +20,6 @@ const getters = {
       //dayRead will be unread if no value provided. The design currently accounts for only the weekday to be displayed
       let dayRead;
       const lastReadDate = item.lastRead ? new Date(item.lastRead) : null;
-      console.log(lastReadDate);
       const lastMessageReceivedDate = lastMessage?.receivedTime
         ? new Date(lastMessage.receivedTime)
         : null;
