@@ -8,6 +8,8 @@ jest.mock("../../../src/store/modules/emails");
 describe("inbox getters", () => {
   let store;
   beforeAll(() => {
+    //Force tests to always be mobile so they are consistent
+    inbox.getters.isMobile = () => true;
     store = createStore({
       modules: {
         chatMessages,
@@ -38,14 +40,10 @@ describe("inbox getters", () => {
     expect(inboxItemType).toBe("chat");
   });
   it("isMobileDrawerOpen", () => {
-    let state = {
-      mobileDrawerOpen: true,
-    };
-    expect(inbox.getters.isMobileDrawerOpen(state)).toBe(true);
-    state = {
-      mobileDrawerOpen: false,
-    };
-    expect(inbox.getters.isMobileDrawerOpen(state)).toBe(false);
+    store.state.inbox.mobileDrawerOpen = true;
+    expect(store.getters["inbox/isMobileDrawerOpen"]).toBe(true);
+    store.state.inbox.mobileDrawerOpen = false;
+    expect(store.getters["inbox/isMobileDrawerOpen"]).toBe(false);
   });
   it("isLoaded", () => {
     const loaded = store.getters["inbox/isLoaded"];
