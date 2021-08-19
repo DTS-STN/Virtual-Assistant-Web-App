@@ -3,12 +3,11 @@
     v-if="dayRead"
     class="flex-auto items-baseline h-16 w-16 md:h-20 md:w-20"
   >
-    <span class="hidden" :id="'day-read-label-' + indexNum">{{
-      $t("msgSentOn")
-    }}</span>
-    <h3
-      :id="'day-read-' + indexNum"
-      :aria-labelledby="'day-read-label-' + indexNum + ' day-read-' + indexNum"
+    <span class="sr-only">
+      {{ $t("msgSentOn") + " " + dayRead }}
+    </span>
+    <span
+      aria-hidden="true"
       class="
         font-heading font-light
         text-sm
@@ -16,10 +15,11 @@
         w-full
         text-center
         pt-4
+        uppercase
       "
     >
-      {{ dayRead }}.
-    </h3>
+      {{ dayRead }}
+    </span>
   </div>
   <div
     v-else

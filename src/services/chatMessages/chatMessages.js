@@ -66,7 +66,8 @@ const receiveMessageHandler = () => {
         activity.from.name,
         activity.text,
         activity.conversation.id,
-        activity.suggestedActions
+        activity.suggestedActions,
+        Date.parse(activity.timestamp)
       );
     },
     (err) => console.log(err)

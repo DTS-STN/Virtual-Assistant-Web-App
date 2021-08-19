@@ -16,7 +16,10 @@
     "serve": "vite preview",
     "lint": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md,vue}\" \"__tests__/**/*.{js,jsx,ts,tsx,json,md,vue}\"",
     "lint:formatting": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,md,vue}\" \"__tests__/**/*.{js,jsx,ts,tsx,json,md,vue}\"",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e": "start-server-and-test dev http-get://localhost:3000 cypress",
+    "cypress": "cypress run",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@babel/core": "^7.14.8",
@@ -40,8 +43,10 @@
     "@vue/compiler-sfc": "^3.1.2",
     "@vue/test-utils": "^2.0.0-rc.10",
     "autoprefixer": "^10.2.6",
+    "cypress": "^8.3.0",
     "focus-visible": "^5.2.0",
     "postcss-focus-visible": "^5.0.0",
+    "start-server-and-test": "^1.13.1",
     "tailwindcss": "^2.2.4",
     "vite": "^2.3.8"
   },
