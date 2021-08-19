@@ -21,10 +21,29 @@ describe("TextInput component", () => {
     await wrapper.setProps({
       buttonOptions: ["Yes"],
     });
-    const quickReply = wrapper.findAll("button").filter((btn) => {
+    const quickReply = await wrapper.findAll("button").filter((btn) => {
       return btn.text() === "Yes";
     })[0]; //get the chatoptionbutton
-    quickReply.trigger("click");
+    await quickReply.trigger("click");
     expect(wrapper.emitted("add-message")).toBeTruthy();
+  });
+
+  describe("input methods are called properly", () => {
+    const input = wrapper.find("input");
+
+    it("keydown.up emits move-to-most-recent-message", async () => {
+      await input.trigger("keydown.up");
+      expect(wrapper.emitted("move-to-most-recent-message")).toBeTruthy();
+    });
+
+    it("blur emits reset-chat-window", async () => {
+      await input.trigger("blur");
+      expect(wrapper.emitted("reset-chat-window")).toBeTruthy();
+    });
+
+    it("keyup.enter emits add-message", async () => {
+      await input.trigger("keyup.enter");
+      expect(wrapper.emitted("add-message")).toBeTruthy();
+    });
   });
 });
