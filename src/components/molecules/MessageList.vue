@@ -2,7 +2,7 @@
   <div
     :class="[
       'w-full h-full flex flex-col',
-      isMobileDrawerOpen ? 'flex' : 'sm:hidden md:flex',
+      isMobileDrawerOpen ? 'xs:flex sm:hidden' : 'xs:hidden sm:flex',
     ]"
   >
     <message-header
