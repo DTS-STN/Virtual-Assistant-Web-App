@@ -89,7 +89,7 @@ const actions = {
           senderName: senderName,
           senderIcon: "VA",
           senderIconAltText: senderIconAltText,
-          lastRead: new Date(),
+          lastRead: new Date().now,
           messages: [],
         });
         if (!rootGetters["inbox/isMobile"])
@@ -101,7 +101,7 @@ const actions = {
           senderName: senderName,
           senderIcon: "VA",
           senderIconAltText: senderIconAltText,
-          lastRead: new Date(),
+          lastRead: new Date().now,
           messages: [
             {
               receivedTime: Date.now(),
