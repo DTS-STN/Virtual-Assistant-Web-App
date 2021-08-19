@@ -56,7 +56,15 @@ const actions = {
         suggestedActions: suggestedActions,
         timestamp: timestamp,
       });
-      if (convoId === rootGetters["inbox/getSelectedInboxItem"].id) {
+      if (
+        convoId === rootGetters["inbox/getSelectedInboxItemId"] &&
+        rootGetters["inbox/isMobileDrawerOpen"]
+      ) {
+        commit("setLastRead", convoId);
+      } else if (
+        convoId === rootGetters["inbox/getSelectedInboxItemId"] &&
+        !rootGetters["inbox/isMobile"]
+      ) {
         commit("setLastRead", convoId);
       }
     };
@@ -83,10 +91,11 @@ const actions = {
           senderName: senderName,
           senderIcon: "VA",
           senderIconAltText: senderIconAltText,
-          lastRead: new Date(),
+          lastRead: new Date().now,
           messages: [],
         });
-        this.dispatch("inbox/selectDefaultInboxItem", conversationId);
+        if (!rootGetters["inbox/isMobile"])
+          this.dispatch("inbox/selectDefaultInboxItem", conversationId);
       })
       .catch((err) => {
         commit("addChatConversation", {
@@ -94,7 +103,7 @@ const actions = {
           senderName: senderName,
           senderIcon: "VA",
           senderIconAltText: senderIconAltText,
-          lastRead: new Date(),
+          lastRead: new Date().now,
           messages: [
             {
               timestamp: Date.now(),

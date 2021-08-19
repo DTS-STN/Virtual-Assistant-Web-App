@@ -1,5 +1,10 @@
 <template>
-  <div class="w-full h-full flex flex-col" v-show="isMobileDrawerOpen">
+  <div
+    :class="[
+      'w-full h-full flex flex-col',
+      isMobileDrawerOpen ? 'flex sm:hidden' : 'hidden sm:flex',
+    ]"
+  >
     <message-header
       backIcon="Back"
       :imageName="mailObject.senderIcon"
