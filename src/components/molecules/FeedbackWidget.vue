@@ -1,9 +1,8 @@
 <template>
-  <div className="bg-blue-mdlt">
-    <div className="w-full mx-auto container px-5 pt-3 bg-yellow-200">
+  <div className="w-full bg-blue-mdlt">
+    <div className=" mx-auto sm:container px-3 sm:px0 pt-3 ">
       <div
-        className="flex justify-between  py-2 w-full mx-auto text-white font-body font-bold  text-2xl
-          bg-green-300 "
+        className="flex justify-between sm:mx-auto py-2 w-full  text-white font-heading font-bold  text-2xl "
       >
         {{ $t("improveService") }}
         <button
@@ -13,7 +12,6 @@
             hover:bg-blue-primary
             text-white text-base
             py-2
-            px-4
             rounded
             items-center
           "
@@ -30,7 +28,7 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span className="underline pl-2">Close</span>
+          <span className="underline pl-2 text-body">Close</span>
         </button>
       </div>
       <ul class="list-outside list-disc px-6 py-2">
@@ -56,6 +54,37 @@
           </a>
         </li>
       </ul>
+      <div class="pb-2">
+        <label class="block pb-2">
+          <span class="text-white font-body font-semibold">{{
+            $t("doBetter")
+          }}</span>
+          <p class="text-white font-body">{{ $t("doBetterBody") }}</p>
+          <p class="text-white font-body pt-2">{{ $t("max2000") }}</p>
+          <textarea
+            class="mt-1 block w-full rounded bg-white border-transparent"
+            rows="4"
+            maxlength="2000"
+          ></textarea>
+        </label>
+
+        <button
+          class="
+            flex
+            text-blue-medium
+            font-semibold
+            text-base
+            bg-gray-default
+            hover:bg-gray-medium hover:text-white
+            py-2
+            px-4
+            rounded
+            items-center
+          "
+        >
+          {{ $t("submit") }}
+        </button>
+      </div>
     </div>
   </div>
 </template>

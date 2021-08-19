@@ -9,7 +9,7 @@
       />
       <FeedbackWidget
         :phase="$t('alpha')"
-        :link="$t('backToProjectsLink')"
+        :link="$t('privacyLink')"
         :linkText="$t('backToProject')"
         :children="$t('testSiteText')"
       />

@@ -4,7 +4,7 @@
       <div className="flex  flex-col sm:flex-row py-2 w-full mx-auto ">
         <div className="flex flex-row sm:flex-col  justify-between">
           <div
-            className="mb-2 px-4 py-1 w-max font-body font-semibold leading-6 tracking-normal bg-white text-blue-medium "
+            className="mb-2 px-4 py-1 w-max font-body font-semibold leading-6 tracking-normal bg-blue-medium text-white outline-white "
           >
             {{ phase }}
           </div>

@@ -31,6 +31,7 @@ module.exports = {
           dark: "#252525",
           medium: "#636367",
           mediumlt: "#767676",
+          default: "#E7E8EA",
           light: "#8c8c8c",
           infomd: "#DEDEDE",
           infolt: "#F8F8F8",
@@ -91,6 +92,8 @@ module.exports = {
       ringWidth: ['focus-visible'],
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
   purge: ["./src/**/*.vue", "./src/**/*.jsx"],
 };

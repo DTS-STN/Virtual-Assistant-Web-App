@@ -52,7 +52,7 @@
   "improveService": "Help us improve this service",
   "doBetter": "How can we do better?",
   "doBetterBody": "Do not include any personal, medical or finacial details, such as your name, social insurance number (SIN), home or business address, phone number or any case or file numbers.",
-  "maximum2000": "Maximum of 2000 characters",
+  "max2000": "Maximum of 2000 characters",
   "feedbackRequired": "Feedback - This field is required",
   "submit": "Submit",
   "privacyLinkText": "Review the privacy policy.",
