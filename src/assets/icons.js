@@ -11,6 +11,11 @@ import SendActive from "./Send/Active/Default.svg";
 import SendActiveFocused from "./Send/Active/focused.svg";
 import SendInactive from "./Send/Inactive/Default.svg";
 
+// Feedback Widget icons
+import Close from "./close.svg";
+import Collapsed from "./Collapsed.svg";
+import Expanded from "./expanded.svg";
+
 export default {
   Mail,
   VA,
@@ -19,4 +24,7 @@ export default {
   SendActive,
   SendActiveFocused,
   SendInactive,
+  Close,
+  Collapsed,
+  Expanded,
 };
