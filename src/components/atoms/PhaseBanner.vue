@@ -14,14 +14,28 @@
             </a>
           </div>
         </div>
-        <p
-          className="font-body text-white block text-sm break-words pt-2 sm:ml-6"
-        >
-          {{ children }}
-        </p>
+        <div className="flex flex-col justify-between sm:ml-6">
+          <p className="font-body text-white block text-sm break-words pt-2">
+            {{ children }}
+          </p>
+          <button
+            class="
+              font-body
+              text-white text-sm
+              font-bold
+              flex
+              justify-start
+              py-4
+              sm:pt-0
+            "
+            @click="toggleFeedbackOpenClick"
+          >
+            ▼{{ $t("giveFeedback") }}
+          </button>
+        </div>
       </div>
     </div>
-    <button @click="toggleFeedbackOpenClick">▼{{ $t("giveFeedback") }}</button>
+
     <FeedbackWidget
       v-if="feedbackOpen"
       :phase="$t('alpha')"
