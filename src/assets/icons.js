@@ -13,7 +13,7 @@ import SendInactive from "./Send/Inactive/Default.svg";
 
 // Feedback Widget icons
 import Close from "./close.svg";
-import Collapsed from "./Collapsed.svg";
+import Collapsed from "./collapsed.svg";
 import Expanded from "./expanded.svg";
 
 export default {
