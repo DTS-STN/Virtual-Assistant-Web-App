@@ -38,18 +38,19 @@
 <script>
 import InboxItem from "./InboxItem.vue";
 import { useStore } from "vuex";
-import { computed } from "vue";
+import { computed, nextTick } from "vue";
 export default {
   setup() {
     const store = useStore();
     const inboxItems = computed(() => store.getters["inbox/getInboxItems"]);
     const inboxLoaded = computed(() => store.getters["inbox/isLoaded"]);
     function selectInboxItem(index) {
-      store.dispatch("inbox/selectInboxItem", index).then(() => {
+      store.dispatch("inbox/selectInboxItem", index).then(async () => {
+        await nextTick();
         const contentWindow =
           document.getElementById("conversationWindow") ||
           document.getElementById("messageList");
-        contentWindow.focus();
+        contentWindow?.focus();
       });
     }
     return {
