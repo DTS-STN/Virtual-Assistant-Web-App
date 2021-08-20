@@ -7,12 +7,6 @@
         :linkText="$t('backToProject')"
         :children="$t('testSiteText')"
       />
-      <FeedbackWidget
-        :phase="$t('alpha')"
-        :link="$t('privacyLink')"
-        :linkText="$t('backToProject')"
-        :children="$t('testSiteText')"
-      />
 
       <div class="pb-2 sm:pb-4 sm:border-b mb-3 sm:border-gray-infomd">
         <!-- Hidden heading -->
@@ -117,7 +111,6 @@
 import Menu from "../atoms/Menu.vue";
 import Banner from "../atoms/Banner.vue";
 import PhaseBanner from "../atoms/PhaseBanner.vue";
-import FeedbackWidget from "../molecules/FeedbackWidget.vue";
 import { useI18n } from "vue-i18n";
 import { computed } from "vue";
 export default {
@@ -126,7 +119,6 @@ export default {
     Menu,
     Banner,
     PhaseBanner,
-    FeedbackWidget,
   },
   setup() {
     const changeLanguageTo = computed(() =>

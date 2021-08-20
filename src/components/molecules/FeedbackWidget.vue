@@ -6,6 +6,7 @@
       >
         {{ $t("improveService") }}
         <button
+          @click="closeFeedbackClick"
           class="
             flex
             bg-blue-mdlt
@@ -107,10 +108,14 @@ export default {
   setup(props, context) {
     const store = useStore();
     const feedbackTextarea = ref("");
+    function closeFeedbackClick() {
+      store.dispatch("feedback/closeFeedback");
+    }
     function sendFeedbackClick() {
       store.dispatch("feedback/sendFeedback", feedbackTextarea.value);
     }
     return {
+      closeFeedbackClick,
       sendFeedbackClick,
       feedbackTextarea,
     };

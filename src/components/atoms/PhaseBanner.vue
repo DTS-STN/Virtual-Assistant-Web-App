@@ -21,10 +21,21 @@
         </p>
       </div>
     </div>
+    <button @click="toggleFeedbackOpenClick">toggle feedback</button>
+    <FeedbackWidget
+      v-if="feedbackOpen"
+      :phase="$t('alpha')"
+      :link="$t('privacyLink')"
+      :linkText="$t('backToProject')"
+      :children="$t('testSiteText')"
+    />
   </div>
 </template>
 
 <script>
+import FeedbackWidget from "../molecules/FeedbackWidget.vue";
+import { useStore } from "vuex";
+import { computed } from "vue";
 export default {
   name: "PhaseBanner",
   props: {
@@ -32,6 +43,23 @@ export default {
     link: String,
     linkText: String,
     children: String,
+  },
+  components: {
+    FeedbackWidget,
+  },
+  setup() {
+    const store = useStore();
+    const feedbackOpen = computed(
+      () => store.getters["feedback/isFeedbackOpen"]
+    );
+    function toggleFeedbackOpenClick() {
+      if (feedbackOpen.value) store.dispatch("feedback/closeFeedback");
+      else store.dispatch("feedback/openFeedback");
+    }
+    return {
+      feedbackOpen,
+      toggleFeedbackOpenClick,
+    };
   },
 };
 </script>
