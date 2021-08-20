@@ -43,11 +43,16 @@
       :linkText="$t('backToProject')"
       :children="$t('testSiteText')"
     />
+    <FeedbackNotification
+      v-if="feedbackResponseMessage"
+      :notification="feedbackResponseMessage"
+    />
   </div>
 </template>
 
 <script>
 import FeedbackWidget from "../molecules/FeedbackWidget.vue";
+import FeedbackNotification from "../atoms/FeedbackNotification.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 export default {
@@ -60,11 +65,15 @@ export default {
   },
   components: {
     FeedbackWidget,
+    FeedbackNotification,
   },
   setup() {
     const store = useStore();
     const feedbackOpen = computed(
       () => store.getters["feedback/isFeedbackOpen"]
+    );
+    const feedbackResponseMessage = computed(
+      () => store.getters["feedback/getFeedbackResponseMessage"]
     );
     function toggleFeedbackOpenClick() {
       if (feedbackOpen.value) store.dispatch("feedback/closeFeedback");
@@ -73,6 +82,7 @@ export default {
     return {
       feedbackOpen,
       toggleFeedbackOpenClick,
+      feedbackResponseMessage,
     };
   },
 };
