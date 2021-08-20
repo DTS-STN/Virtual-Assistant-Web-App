@@ -62,6 +62,7 @@
           <p class="text-white font-body">{{ $t("doBetterBody") }}</p>
           <p class="text-white font-body pt-2">{{ $t("max2000") }}</p>
           <textarea
+            v-model="feedbackTextarea"
             class="mt-1 block w-full rounded bg-white border-transparent"
             rows="4"
             maxlength="2000"
@@ -69,6 +70,7 @@
         </label>
 
         <button
+          @click="sendFeedbackClick"
           class="
             flex
             text-blue-medium
@@ -91,6 +93,8 @@
 
 <script>
 import FunctionButton from "../atoms/FunctionButton.vue";
+import { ref } from "vue";
+import { useStore } from "vuex";
 export default {
   components: { FunctionButton },
   name: "FeedbackWidget",
@@ -99,6 +103,17 @@ export default {
     link: String,
     linkText: String,
     children: String,
+  },
+  setup(props, context) {
+    const store = useStore();
+    const feedbackTextarea = ref("");
+    function sendFeedbackClick() {
+      store.dispatch("feedback/sendFeedback", feedbackTextarea.value);
+    }
+    return {
+      sendFeedbackClick,
+      feedbackTextarea,
+    };
   },
 };
 </script>
