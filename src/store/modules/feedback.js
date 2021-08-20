@@ -1,3 +1,5 @@
+import feedbackService from "../../services/feedback/feedbackService";
+
 const state = {
   feedbackOpen: false,
   feedbackTextarea: "",
@@ -13,8 +15,9 @@ const getters = {
 // actions
 const actions = {
   async sendFeedback(context, feedback) {
-    console.log("sending feedback...");
-    console.log(feedback);
+    //Validate feedback is 0-2000 characters long
+    if (feedback && feedback.length > 0 && feedback.length <= 2000)
+      feedbackService.post(feedback);
   },
   async openFeedback(context) {
     context.commit("setFeedbackOpen", true);
