@@ -80,6 +80,7 @@ export default {
     inboxItem: Object,
     indexNum: Number,
   },
+  emits: ["select-inbox-item"],
   setup(props, context) {
     function selectInboxItem() {
       context.emit("select-inbox-item", props.inboxItem.id);
