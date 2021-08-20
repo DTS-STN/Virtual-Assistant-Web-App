@@ -21,7 +21,7 @@
         </p>
       </div>
     </div>
-    <button @click="toggleFeedbackOpenClick">toggle feedback</button>
+    <button @click="toggleFeedbackOpenClick">▼{{ $t("giveFeedback") }}</button>
     <FeedbackWidget
       v-if="feedbackOpen"
       :phase="$t('alpha')"
