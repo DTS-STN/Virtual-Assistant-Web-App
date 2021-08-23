@@ -32,7 +32,6 @@
       v-if="isLastMessage"
       ref="chatReaderIcon"
       :src="icons[senderIcon]"
-      :alt="senderIconAltText"
       class="h-6 w-10 absolute left-0 bottom-0"
     />
   </li>
@@ -44,7 +43,6 @@ export default {
   emits: ["return-to-chat-window"],
   props: {
     senderIcon: String,
-    senderIconAltText: String,
     isUser: Boolean,
     isLastMessage: Boolean,
     text: String,
