@@ -14,7 +14,7 @@
             </a>
           </div>
         </div>
-        <div className="flex flex-col justify-between sm:ml-6">
+        <div className="flex flex-col space-y-3 sm:ml-6">
           <p className="font-body text-white block text-sm break-words pt-2">
             {{ children }}
           </p>
@@ -30,7 +30,23 @@
             "
             @click="toggleFeedbackOpenClick"
           >
-            ▼{{ $t("giveFeedback") }}
+            <img
+              v-if="feedbackOpen"
+              id="caretOpen"
+              className="h-5"
+              src="../../assets/expanded.svg"
+              :alt="$t('expanded')"
+            />
+
+            <img
+              v-else
+              id="caretClosed"
+              className="h-5"
+              src="../../assets/collapsed.svg"
+              :alt="$t('collapsed')"
+            />
+
+            {{ $t("giveFeedback") }}
           </button>
         </div>
       </div>

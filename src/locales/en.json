@@ -58,5 +58,7 @@
   "feedbackRequired": "Feedback - This field is required",
   "submit": "Submit",
   "privacyLinkText": "Review the privacy policy.",
-  "privacyLink": "https://alpha.service.canada.ca/signup/privacy"
+  "privacyLink": "https://alpha.service.canada.ca/signup/privacy",
+  "expanded": "expanded",
+  "collapsed": "collapsed"
 }
