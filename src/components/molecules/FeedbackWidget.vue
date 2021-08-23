@@ -1,8 +1,17 @@
 <template>
-  <div className="w-full bg-blue-mdlt">
-    <div className=" mx-auto sm:container px-3 sm:px0 pt-3 ">
+  <div class="w-full bg-blue-mdlt">
+    <div class="mx-auto sm:container px-3 sm:px0 pt-3">
       <div
-        className="flex justify-between sm:mx-auto py-2 w-full  text-white font-heading font-bold  text-2xl "
+        class="
+          flex
+          justify-between
+          sm:mx-auto
+          py-2
+          w-full
+          text-white
+          font-heading font-bold
+          text-2xl
+        "
       >
         {{ $t("improveService") }}
         <button
@@ -29,7 +38,7 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span className="underline pl-2 text-body">Close</span>
+          <span class="underline pl-2 text-body">{{ $t("close") }}</span>
         </button>
       </div>
       <ul class="list-outside list-disc px-6 py-2">
@@ -39,7 +48,7 @@
           <span
             >{{ $t("enquiries") }}{{ " " }}
             <a
-              className="underline  font-body hover:text-gray-300 text-white"
+              class="underline font-body hover:text-gray-300 text-white"
               href="mailto:experience@servicecanada.gc.ca"
             >
               experience@servicecanada.gc.ca
@@ -50,7 +59,7 @@
           <strong>{{ $t("confidential") }}</strong
           >{{ " " }}
 
-          <a className="underline text-white" :href="link">
+          <a class="underline text-white" :href="link">
             {{ $t("privacyLinkText") }}
           </a>
         </li>
@@ -62,6 +71,7 @@
           }}</span>
           <p class="text-white font-body">{{ $t("doBetterBody") }}</p>
           <p class="text-white font-body pt-2">{{ $t("max2000") }}</p>
+          <ErrorLabel message="No text has been entered" colorClass="" />
           <textarea
             v-model="feedbackTextarea"
             class="mt-1 block w-full rounded bg-white border-transparent"
@@ -94,10 +104,12 @@
 
 <script>
 import FunctionButton from "../atoms/FunctionButton.vue";
+import ErrorLabel from "../atoms/ErrorLabel.vue";
 import { ref } from "vue";
 import { useStore } from "vuex";
 export default {
   components: { FunctionButton },
+  components: { ErrorLabel },
   name: "FeedbackWidget",
   props: {
     phase: String,
