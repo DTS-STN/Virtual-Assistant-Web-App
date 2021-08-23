@@ -2,7 +2,6 @@ import feedbackService from "../../services/feedback/feedbackService";
 
 const state = {
   feedbackOpen: false,
-  feedbackTextarea: "",
   feedbackResponseMessage: undefined,
 };
 

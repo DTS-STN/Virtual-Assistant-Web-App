@@ -44,7 +44,7 @@
       :children="$t('testSiteText')"
     />
     <FeedbackNotification
-      v-if="feedbackResponseMessage"
+      v-else-if="feedbackResponseMessage"
       :notification="feedbackResponseMessage"
     />
   </div>
