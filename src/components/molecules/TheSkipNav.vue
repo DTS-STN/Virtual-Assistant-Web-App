@@ -20,11 +20,13 @@
           p-2
           rounded
           block
-          outline-white
+          focus-within:outline-white
         "
         @click="toMain"
       >
-        <a href="#index-header">{{ $t("skipToMain") }}</a>
+        <a href="#index-header" class="ring-transparent">{{
+          $t("skipToMain")
+        }}</a>
       </li>
     </ul>
   </nav>
