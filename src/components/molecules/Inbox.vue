@@ -6,8 +6,8 @@
     </div>
     <div class="sm:overflow-auto space-y-1">
       <!-- Empty inbox items -->
-      <inbox-item :inboxItem="{}" />
-      <inbox-item :inboxItem="{}" />
+      <InboxItem :inboxItem="{}" />
+      <InboxItem :inboxItem="{}" />
     </div>
   </span>
   <!-- Loaded State -->
@@ -24,7 +24,7 @@
       {{ $t("inbox") }}
     </h1>
     <ul class="sm:overflow-auto space-y-1">
-      <inbox-item
+      <InboxItem
         v-for="(inboxItem, index) in inboxItems"
         :key="inboxItem.id"
         :indexNum="index"
@@ -38,18 +38,19 @@
 <script>
 import InboxItem from "./InboxItem.vue";
 import { useStore } from "vuex";
-import { computed } from "vue";
+import { computed, nextTick } from "vue";
 export default {
   setup() {
     const store = useStore();
     const inboxItems = computed(() => store.getters["inbox/getInboxItems"]);
     const inboxLoaded = computed(() => store.getters["inbox/isLoaded"]);
     function selectInboxItem(index) {
-      store.dispatch("inbox/selectInboxItem", index).then(() => {
+      store.dispatch("inbox/selectInboxItem", index).then(async () => {
+        await nextTick();
         const contentWindow =
           document.getElementById("conversationWindow") ||
           document.getElementById("messageList");
-        contentWindow.focus();
+        contentWindow?.focus();
       });
     }
     return {
