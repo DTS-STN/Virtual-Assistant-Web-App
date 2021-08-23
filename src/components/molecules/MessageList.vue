@@ -16,6 +16,7 @@
       id="messageList"
       tabindex="0"
       aria-live="polite"
+      @keydown.exact.shift.tab.prevent="$emit('returning-to-inbox')"
     >
       <message-card
         v-for="email of mailObject.emails"

@@ -31,6 +31,7 @@
         @keyup.exact.enter="accessIndividualMessages(0)"
         @keyup.shift.enter="accessIndividualMessages(-1)"
         aria-live="polite"
+        @keydown.exact.shift.tab.prevent="$emit('returning-to-inbox')"
       >
         <li>
           <p

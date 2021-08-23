@@ -1,6 +1,11 @@
 <template>
   <li
     tabindex="0"
+    :id="
+      inboxItem.selected
+        ? 'selected-inbox-item'
+        : 'unselected-inbox-item-' + indexNum
+    "
     @click="selectInboxItem"
     @keyup.enter="selectInboxItem"
     :class="[
