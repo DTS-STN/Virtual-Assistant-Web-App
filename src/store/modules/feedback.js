@@ -3,6 +3,7 @@ import feedbackService from "../../services/feedback/feedbackService";
 const state = {
   feedbackOpen: false,
   feedbackResponseMessage: undefined,
+  feedbackValidationMessage: undefined,
 };
 
 //getters
@@ -13,17 +14,38 @@ const getters = {
   getFeedbackResponseMessage(state) {
     return state.feedbackResponseMessage;
   },
+  getFeedbackValidationMessage(state) {
+    return state.feedbackValidationMessage;
+  },
 };
 
 // actions
 const actions = {
   async sendFeedback(context, feedback) {
-    //Validate feedback is 0-2000 characters long
-    if (feedback && feedback.length > 0 && feedback.length <= 2000) {
-      const responseMessage = feedbackService.post(feedback);
-      context.commit("setFeedbackResponseMessage", responseMessage);
-      context.commit("setFeedbackOpen", false);
+    //trim feedback
+    feedback = feedback.trim();
+    //clear existing validation error
+    context.commit("setFeedbackValidationMessage", undefined);
+
+    //Validate that feedback is 0-2000 characters long
+    if (feedback.length <= 0) {
+      context.commit(
+        "setFeedbackValidationMessage",
+        "feedbackValidationTooShortMessage"
+      );
+      return;
+    } else if (feedback.length > 2000) {
+      context.commit(
+        "setFeedbackValidationMessage",
+        "feedbackValidationTooLongMessage"
+      );
+      return;
     }
+
+    //Handle feedback request
+    const responseMessage = feedbackService.post(feedback);
+    context.commit("setFeedbackResponseMessage", responseMessage);
+    context.commit("setFeedbackOpen", false);
   },
   async openFeedback(context) {
     context.commit("setFeedbackOpen", true);
@@ -43,6 +65,9 @@ const mutations = {
   },
   setFeedbackResponseMessage(state, responseMessage) {
     state.feedbackResponseMessage = responseMessage;
+  },
+  setFeedbackValidationMessage(state, validationMessage) {
+    state.feedbackValidationMessage = validationMessage;
   },
 };
 

@@ -45,6 +45,8 @@
 
   "giveFeedback": "Give feedback to help improve this service",
   "thankYouFeedback": "Thank you for your feedback!",
+  "feedbackValidationTooShortMessage": "Feedback too short",
+  "feedbackValidationTooLongMessage": "Feedback must be under 2000 characters",
   "close": "Close",
   "noReply": "You will not receive a reply.",
   "enquiries": "for enquiries, please contact",

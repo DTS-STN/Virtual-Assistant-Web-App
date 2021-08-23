@@ -71,7 +71,11 @@
           }}</span>
           <p class="text-white font-body">{{ $t("doBetterBody") }}</p>
           <p class="text-white font-body pt-2">{{ $t("max2000") }}</p>
-          <ErrorLabel message="No text has been entered" colorClass="" />
+          <ErrorLabel
+            v-if="feedbackValidationMessage"
+            :message="$t(feedbackValidationMessage)"
+            colorClass=""
+          />
           <textarea
             v-model="feedbackTextarea"
             class="mt-1 block w-full rounded bg-white border-transparent"
@@ -107,6 +111,7 @@ import FunctionButton from "../atoms/FunctionButton.vue";
 import ErrorLabel from "../atoms/ErrorLabel.vue";
 import { ref } from "vue";
 import { useStore } from "vuex";
+import { computed } from "vue";
 export default {
   components: { FunctionButton },
   components: { ErrorLabel },
@@ -126,10 +131,14 @@ export default {
     function sendFeedbackClick() {
       store.dispatch("feedback/sendFeedback", feedbackTextarea.value);
     }
+    const feedbackValidationMessage = computed(
+      () => store.getters["feedback/getFeedbackValidationMessage"]
+    );
     return {
       closeFeedbackClick,
       sendFeedbackClick,
       feedbackTextarea,
+      feedbackValidationMessage,
     };
   },
 };
