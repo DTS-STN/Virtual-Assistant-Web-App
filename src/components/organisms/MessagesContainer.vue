@@ -24,39 +24,7 @@
       <ConversationWindow v-if="inboxItemType === 'chat'" />
       <message-list v-else-if="inboxItemType === 'email'" />
       <!-- Default to empty window if no item is selected/while loading -->
-      <div
-        v-else
-        class="
-          w-full
-          h-full
-          flex flex-col
-          p-4
-          sm:p-0
-          text-gray-dark
-          sm:relative
-        "
-      >
-        <div class="sticky top-0 opacity-95 bg-white md:opacity-100">
-          <div class="flex border-b border-gray-200 px-2 py-4">
-            <div
-              class="
-                h-10
-                mt-auto
-                w-10
-                bg-gray-infolt
-                rounded-full
-                animate-pulse
-              "
-            />
-            <div class="h-10 py-2 pl-2 w-1/3">
-              <div class="bg-gray-infolt h-full animate-pulse" />
-            </div>
-          </div>
-        </div>
-        <div class="flex h-full overflow-auto"></div>
-        <div class="sticky bottom-0 h-20 border-t" />
-        <span class="bg-gray-infolt p-2 sm:p-0 h-20"></span>
-      </div>
+      <ConversationLoading v-else />
     </div>
   </div>
 </template>
@@ -65,6 +33,7 @@
 import Inbox from "../molecules/Inbox.vue";
 import ConversationWindow from "./ConversationWindow.vue";
 import MessageList from "../molecules/MessageList.vue";
+import ConversationLoading from "../molecules/ConversationLoading.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 export default {
@@ -74,6 +43,7 @@ export default {
   components: {
     ConversationWindow,
     MessageList,
+    ConversationLoading,
     Inbox,
   },
   setup() {
@@ -84,6 +54,7 @@ export default {
     const isMobileDrawerOpen = computed(
       () => store.getters["inbox/isMobileDrawerOpen"]
     );
+
     return {
       inboxItemType,
       isMobileDrawerOpen,

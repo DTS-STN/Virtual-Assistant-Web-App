@@ -1,9 +1,13 @@
 <template>
-  <div class="w-full h-full flex flex-col" v-show="isMobileDrawerOpen">
+  <div
+    :class="[
+      'w-full h-full flex flex-col',
+      isMobileDrawerOpen ? 'flex sm:hidden' : 'hidden sm:flex',
+    ]"
+  >
     <message-header
       backIcon="Back"
       :imageName="mailObject.senderIcon"
-      :altText="mailObject.senderIconAltText"
       :headerText="mailObject.senderName"
     />
     <ul
@@ -30,7 +34,6 @@ import { useI18n } from "vue-i18n";
 import { useStore } from "vuex";
 import { computed } from "vue";
 import icons from "../../assets/icons.js";
-import { i18n } from "./../../../i18n";
 
 export default {
   components: {
@@ -53,14 +56,14 @@ export default {
     //creates a timestamp with js's default date methods
     const createTimestamps = (dateString) => {
       const date = new Date(dateString);
-      const shortTimestamp = date.toLocaleDateString(i18n.global.locale.value, {
+      const shortTimestamp = date.toLocaleDateString(useI18n().locale.value, {
         weekday: "short",
         month: "short",
         day: "2-digit",
         hour: "2-digit",
         minute: "2-digit",
       });
-      const fullTimestamp = date.toLocaleDateString(i18n.global.locale.value, {
+      const fullTimestamp = date.toLocaleDateString(useI18n().locale.value, {
         weekday: "long",
         month: "long",
         day: "2-digit",

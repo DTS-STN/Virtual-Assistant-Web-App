@@ -14,8 +14,8 @@ const getters = {
     if (cm != undefined) {
       if (cm.messages.length !== 0) {
         cm.messages = [...cm.messages].sort((a, b) => {
-          const firstDate = new Date(a.receivedTime).getTime();
-          const secondDate = new Date(b.receivedTime).getTime();
+          const firstDate = new Date(a.timestamp).getTime();
+          const secondDate = new Date(b.timestamp).getTime();
           if (firstDate > secondDate) {
             return 1;
           }
@@ -46,15 +46,25 @@ const actions = {
       userName,
       message,
       convoId,
-      suggestedActions
+      suggestedActions,
+      timestamp
     ) => {
       commit("addMessageToConversation", {
         id: convoId,
         isUser: "userName" === userName,
         text: message,
         suggestedActions: suggestedActions,
+        timestamp: timestamp,
       });
-      if (convoId === rootGetters["inbox/getSelectedInboxItem"].id) {
+      if (
+        convoId === rootGetters["inbox/getSelectedInboxItemId"] &&
+        rootGetters["inbox/isMobileDrawerOpen"]
+      ) {
+        commit("setLastRead", convoId);
+      } else if (
+        convoId === rootGetters["inbox/getSelectedInboxItemId"] &&
+        !rootGetters["inbox/isMobile"]
+      ) {
         commit("setLastRead", convoId);
       }
     };
@@ -81,10 +91,11 @@ const actions = {
           senderName: senderName,
           senderIcon: "VA",
           senderIconAltText: senderIconAltText,
-          lastRead: new Date(),
+          lastRead: new Date().now,
           messages: [],
         });
-        this.dispatch("inbox/selectDefaultInboxItem", conversationId);
+        if (!rootGetters["inbox/isMobile"])
+          this.dispatch("inbox/selectDefaultInboxItem", conversationId);
       })
       .catch((err) => {
         commit("addChatConversation", {
@@ -92,10 +103,10 @@ const actions = {
           senderName: senderName,
           senderIcon: "VA",
           senderIconAltText: senderIconAltText,
-          lastRead: new Date(),
+          lastRead: new Date().now,
           messages: [
             {
-              receivedTime: Date.now(),
+              timestamp: Date.now(),
               isUser: false,
               text: err.message.charAt(0).toUpperCase() + err.message.slice(1),
             },
@@ -146,7 +157,7 @@ const mutations = {
     );
     // Create the new message object.
     const newMessage = {
-      receivedTime: Date.now(),
+      timestamp: payload.timestamp,
       isUser: payload.isUser,
       text: payload.text,
       suggestedActions: payload.suggestedActions,

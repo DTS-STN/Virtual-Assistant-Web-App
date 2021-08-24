@@ -5,7 +5,7 @@
     @keyup.enter="selectInboxItem"
     :class="[
       inboxItem.selected
-        ? 'bg-blue-selected rounded-none'
+        ? 'sm:bg-blue-selected sm:rounded-none'
         : 'focus:bg-gray-infolt hover:bg-gray-infolt ',
       inboxItem.id ? '' : 'bg-gray-infolt animate-pulse',
       'flex items-center w-full h-16 md:h-20 rounded active:bg-blue-selected cursor-pointer',
@@ -39,29 +39,28 @@
       >
         {{ inboxItem.senderName }}
       </h2>
-      <span class="hidden" :id="'status-and-teaser-announcement-' + indexNum"
-        >{{
-          inboxItem.selected === true
+      <span class="sr-only">
+        {{
+          (inboxItem.selected === true
             ? $t("currentlySelected")
-            : $t("accessInboxItem") +
-              (inboxItem.dayRead ? $t("alreadyRead") : $t("unread"))
-        }}. {{ $t("teaserText") }}:</span
-      >
-      <h2
+            : $t("accessInboxItem")) +
+          (inboxItem.dayRead ? $t("alreadyRead") : $t("unread")) +
+          ". " +
+          $t("teaserText") +
+          ": " +
+          (inboxItem.teaserText ? inboxItem.teaserText : $t("noMessages"))
+        }}
+      </span>
+      <span
+        aria-hidden="true"
         :id="'teaser-text-' + indexNum"
-        :aria-labelledby="
-          'status-and-teaser-announcement-' +
-          indexNum +
-          ' teaser-text-' +
-          indexNum
-        "
         :class="[
           !inboxItem.dayRead ? 'font-body' : 'font-heading font-light',
           'text-sm md:text-lg truncate overflow-ellipsis text-gray-dark pl-1',
         ]"
       >
         {{ inboxItem.teaserText ? inboxItem.teaserText : $t("noMessages") }}
-      </h2>
+      </span>
     </div>
     <div>
       <read-notification
@@ -81,6 +80,7 @@ export default {
     inboxItem: Object,
     indexNum: Number,
   },
+  emits: ["select-inbox-item"],
   setup(props, context) {
     function selectInboxItem() {
       context.emit("select-inbox-item", props.inboxItem.id);
