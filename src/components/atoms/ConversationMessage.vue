@@ -32,6 +32,7 @@
       v-if="isLastMessage"
       ref="chatReaderIcon"
       :src="icons[senderIcon]"
+      alt=""
       class="h-6 w-10 absolute left-0 bottom-0"
     />
   </li>
