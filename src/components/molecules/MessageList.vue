@@ -16,7 +16,9 @@
       id="messageList"
       tabindex="0"
       aria-live="polite"
-      @keydown.exact.shift.tab.prevent="$emit('returning-to-inbox')"
+      @keydown.exact.shift.tab.self="
+        shiftTabFromConversationWindowHandler($event)
+      "
     >
       <message-card
         v-for="email of mailObject.emails"
@@ -43,7 +45,7 @@ export default {
     MessageCard,
     MessageHeader,
   },
-  setup() {
+  setup(_, context) {
     const store = useStore();
     const selectedInboxItemId = store.getters["inbox/getSelectedInboxItem"].id;
     store.dispatch("emails/markEmailRead", selectedInboxItemId);
@@ -76,11 +78,19 @@ export default {
       return { fullTimestamp: fullTimestamp, shortTimestamp: shortTimestamp };
     };
 
+    function shiftTabFromConversationWindowHandler(event) {
+      if (!isMobileDrawerOpen.value) {
+        event.preventDefault();
+        context.emit("returning-to-inbox");
+      }
+    }
+
     return {
       mailObject,
       createTimestamps,
       isMobileDrawerOpen,
       icons,
+      shiftTabFromConversationWindowHandler,
     };
   },
 };
