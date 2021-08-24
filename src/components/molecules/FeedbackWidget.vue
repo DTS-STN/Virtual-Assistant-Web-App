@@ -129,7 +129,10 @@ export default {
       store.dispatch("feedback/closeFeedback");
     }
     function sendFeedbackClick() {
-      store.dispatch("feedback/sendFeedback", feedbackTextarea.value);
+      store.dispatch("feedback/sendFeedback", {
+        feedback: feedbackTextarea.value,
+        route: window.location.href,
+      });
     }
     const feedbackValidationMessage = computed(
       () => store.getters["feedback/getFeedbackValidationMessage"]

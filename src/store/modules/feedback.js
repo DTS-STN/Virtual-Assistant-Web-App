@@ -21,7 +21,7 @@ const getters = {
 
 // actions
 const actions = {
-  async sendFeedback(context, feedback) {
+  async sendFeedback(context, { feedback, route }) {
     //trim feedback
     feedback = feedback.trim();
     //clear existing validation error
@@ -43,7 +43,7 @@ const actions = {
     }
 
     //Handle feedback request
-    const responseMessage = feedbackService.post(feedback);
+    const responseMessage = feedbackService.post(feedback, route);
     context.commit("setFeedbackResponseMessage", responseMessage);
     context.commit("setFeedbackOpen", false);
   },
