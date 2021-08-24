@@ -8,7 +8,6 @@
     <message-header
       backIcon="Back"
       :imageName="mailObject.senderIcon"
-      :altText="mailObject.senderIconAltText"
       :headerText="mailObject.senderName"
     />
     <ul
