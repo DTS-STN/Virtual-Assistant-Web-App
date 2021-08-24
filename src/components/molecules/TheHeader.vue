@@ -5,7 +5,7 @@
         :phase="$t('alpha')"
         :link="$t('backToProjectsLink')"
         :linkText="$t('backToProject')"
-        :children="$t('testSiteText')"
+        :phaseText="$t('testSiteText')"
       />
 
       <div class="pb-2 sm:pb-4 sm:border-b mb-3 sm:border-gray-infomd">

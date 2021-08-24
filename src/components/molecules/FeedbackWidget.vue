@@ -19,11 +19,12 @@
           class="
             flex
             bg-blue-mdlt
-            hover:bg-blue-primary
+            hover:text-gray-300
             text-white text-base
-            py-2
+            p-2
             rounded
             items-center
+            focus-visible:ring-white
           "
         >
           <svg
@@ -48,7 +49,13 @@
           <span
             >{{ $t("enquiries") }}{{ " " }}
             <a
-              class="underline font-body hover:text-gray-300 text-white"
+              class="
+                underline
+                font-body
+                hover:text-gray-300
+                text-white
+                focus-visible:ring-white
+              "
               href="mailto:experience@servicecanada.gc.ca"
             >
               experience@servicecanada.gc.ca
@@ -59,7 +66,15 @@
           <strong>{{ $t("confidential") }}</strong
           >{{ " " }}
 
-          <a class="underline text-white" :href="link">
+          <a
+            class="
+              underline
+              hover:text-gray-300
+              text-white
+              focus-visible:ring-white
+            "
+            :href="link"
+          >
             {{ $t("privacyLinkText") }}
           </a>
         </li>
@@ -97,6 +112,7 @@
             px-4
             rounded
             items-center
+            focus-visible:ring-white
           "
         >
           {{ $t("submit") }}
@@ -107,21 +123,14 @@
 </template>
 
 <script>
-import FunctionButton from "../atoms/FunctionButton.vue";
 import ErrorLabel from "../atoms/ErrorLabel.vue";
 import { ref } from "vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 export default {
-  components: { FunctionButton },
   components: { ErrorLabel },
   name: "FeedbackWidget",
-  props: {
-    phase: String,
-    link: String,
-    linkText: String,
-    children: String,
-  },
+  props: {},
   setup(props, context) {
     const store = useStore();
     const feedbackTextarea = ref("");

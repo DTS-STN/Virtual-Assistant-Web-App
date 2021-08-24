@@ -10,7 +10,7 @@
           </div>
           <div className="pt-1 sm:pt-0 sm:mb-2 font-body sm:whitespace-nowrap">
             <a
-              className="underline text-white focus-visible:ring-white"
+              className="underline text-white hover:text-gray-300 focus-visible:ring-white"
               :href="link"
             >
               {{ linkText }}
@@ -18,25 +18,29 @@
           </div>
         </div>
         <div className="flex flex-col space-y-3 sm:ml-6">
-          <p className="font-body text-white block text-sm break-words pt-2">
-            {{ children }}
+          <p
+            className="font-body text-white block text-sm break-words pt-2 sm:pt-0"
+          >
+            {{ phaseText }}
           </p>
           <button
             class="
               font-body
-              text-white text-sm
+              text-white text-base
+              hover:text-gray-300
               font-bold
               flex
               justify-start
-              py-4
-              sm:pt-0
+              py-2
+              sm:pt-2
+              focus-visible:ring-white
             "
             @click="toggleFeedbackOpenClick"
           >
             <img
               v-if="feedbackOpen"
               id="caretOpen"
-              className="h-5"
+              className="h-6"
               src="../../assets/expanded.svg"
               :alt="$t('expanded')"
             />
@@ -44,7 +48,7 @@
             <img
               v-else
               id="caretClosed"
-              className="h-5"
+              className="h-6"
               src="../../assets/collapsed.svg"
               :alt="$t('collapsed')"
             />
@@ -55,13 +59,7 @@
       </div>
     </div>
 
-    <FeedbackWidget
-      v-if="feedbackOpen"
-      :phase="$t('alpha')"
-      :link="$t('privacyLink')"
-      :linkText="$t('backToProject')"
-      :children="$t('testSiteText')"
-    />
+    <FeedbackWidget v-if="feedbackOpen" />
     <FeedbackNotification
       v-else-if="feedbackResponseMessage"
       :notification="feedbackResponseMessage"
@@ -80,7 +78,7 @@ export default {
     phase: String,
     link: String,
     linkText: String,
-    children: String,
+    phaseText: String,
   },
   components: {
     FeedbackWidget,
