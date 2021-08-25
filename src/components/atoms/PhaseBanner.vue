@@ -5,6 +5,7 @@
         <div className="flex flex-row sm:flex-col  justify-between">
           <div
             className="mb-2 px-4 py-1 w-max font-body font-semibold leading-6 tracking-normal bg-blue-medium text-white outline-white "
+            data-cy="phase"
           >
             {{ phase }}
           </div>
@@ -12,6 +13,7 @@
             <a
               className="underline text-white hover:text-gray-300 focus-visible:ring-white"
               :href="link"
+              data-cy="project-link"
             >
               {{ linkText }}
             </a>
@@ -20,10 +22,12 @@
         <div className="flex flex-col space-y-3 sm:ml-6">
           <p
             className="font-body text-white block text-sm break-words pt-2 sm:pt-0"
+            data-cy="phase-text"
           >
             {{ phaseText }}
           </p>
           <button
+            data-cy="widget-toggle"
             class="
               font-body
               text-white text-base
@@ -59,7 +63,7 @@
       </div>
     </div>
 
-    <FeedbackWidget v-if="feedbackOpen" />
+    <FeedbackWidget v-if="feedbackOpen" :link="$t('privacyLink')" />
     <FeedbackNotification
       v-else-if="feedbackResponseMessage"
       :notification="feedbackResponseMessage"

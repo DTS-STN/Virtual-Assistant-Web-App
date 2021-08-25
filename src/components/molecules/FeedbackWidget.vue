@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-blue-mdlt">
+  <div class="w-full bg-blue-mdlt" data-cy="feedback-widget">
     <div class="mx-auto sm:container px-3 sm:px0 pt-3">
       <div
         class="
@@ -12,6 +12,7 @@
           font-heading font-bold
           text-2xl
         "
+        data-cy="improve-service"
       >
         {{ $t("improveService") }}
         <button
@@ -26,6 +27,7 @@
             items-center
             focus-visible:ring-white
           "
+          data-cy="close-button"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -56,6 +58,7 @@
                 text-white
                 focus-visible:ring-white
               "
+              data-cy="mailto-link"
               href="mailto:experience@servicecanada.gc.ca"
             >
               experience@servicecanada.gc.ca
@@ -73,6 +76,7 @@
               text-white
               focus-visible:ring-white
             "
+            data-cy="privacy-link"
             :href="link"
           >
             {{ $t("privacyLinkText") }}
@@ -80,7 +84,7 @@
         </li>
       </ul>
       <div class="pb-2">
-        <label class="block pb-2">
+        <label class="block pb-2" data-cy="feedback-label">
           <span class="text-white font-body font-semibold">{{
             $t("doBetter")
           }}</span>
@@ -90,8 +94,10 @@
             v-if="feedbackValidationMessage"
             :message="$t(feedbackValidationMessage)"
             colorClass=""
+            data-cy="error-label"
           />
           <textarea
+            id="feedbackTextarea"
             v-model="feedbackTextarea"
             class="mt-1 block w-full rounded bg-white border-transparent"
             rows="4"
@@ -114,6 +120,7 @@
             items-center
             focus-visible:ring-white
           "
+          data-cy="submit-button"
         >
           {{ $t("submit") }}
         </button>
@@ -130,7 +137,9 @@ import { computed } from "vue";
 export default {
   components: { ErrorLabel },
   name: "FeedbackWidget",
-  props: {},
+  props: {
+    link: String,
+  },
   setup(props, context) {
     const store = useStore();
     const feedbackTextarea = ref("");
