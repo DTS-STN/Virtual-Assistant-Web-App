@@ -8,7 +8,6 @@
     <div class="w-full opacity-95 z-10 bg-white sm:opacity-100">
       <message-header
         :imageName="chatMessage.senderIcon"
-        :altText="chatMessage.senderIconAltText"
         :headerText="chatMessage.senderName"
       />
     </div>
@@ -56,7 +55,6 @@
           :senderName="chatMessage.senderName"
           :text="message.text"
           :senderIcon="chatMessage.senderIcon"
-          :senderIconAltText="chatMessage.senderIconAltText"
           :isLastMessage="index === chatMessage.messages.length - 1"
         />
         <ConversationFooter

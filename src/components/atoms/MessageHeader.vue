@@ -11,16 +11,12 @@
       @focus="setBackIcon('BackFocused')"
       @focusout="setBackIcon('Back')"
     >
-      <img
-        :src="icons[backIcon]"
-        :alt="altText"
-        class="h-10 mt-auto w-10 mr-4"
-      />
+      <img :src="icons[backIcon]" alt="" class="h-10 mt-auto w-10 mr-4" />
     </button>
 
     <img
       :src="icons[imageName]"
-      :alt="altText"
+      alt=""
       class="h-10 mt-auto w-10"
       aria-hidden="true"
     />
@@ -35,7 +31,6 @@ import { ref, computed } from "vue";
 export default {
   props: {
     imageName: String,
-    altText: String,
     headerText: String,
   },
   setup() {
