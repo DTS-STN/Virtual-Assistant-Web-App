@@ -28,8 +28,8 @@
         "
         tabindex="0"
         :aria-label="$t('conversationWindowDesc')"
-        @keyup.exact.enter="accessIndividualMessages(0)"
-        @keyup.shift.enter="accessIndividualMessages(-1)"
+        @keydown.exact.enter="accessIndividualMessages(0)"
+        @keydown.exact.shift.enter="accessIndividualMessages(-1)"
         aria-live="polite"
         @keydown.exact.shift.tab.self="
           shiftTabFromConversationWindowHandler($event)

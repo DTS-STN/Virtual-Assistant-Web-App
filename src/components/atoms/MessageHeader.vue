@@ -31,7 +31,7 @@
 <script>
 import icons from "../../assets/icons.js";
 import { useStore } from "vuex";
-import { ref, computed } from "vue";
+import { ref, computed, nextTick } from "vue";
 export default {
   props: {
     imageName: String,
@@ -52,6 +52,9 @@ export default {
 
     function clickBack() {
       store.dispatch("inbox/closeInboxItem");
+      nextTick().then(() =>
+        document.getElementById("selected-inbox-item")?.focus()
+      );
     }
     function setBackIcon(icon) {
       backIcon.value = icon;

@@ -45,7 +45,7 @@ describe("InboxItem component", () => {
 
   it("Check for emit on InboxItem enter keydown", () => {
     const li = wrapper.find("li");
-    li.trigger("keyup.enter");
+    li.trigger("keydown.enter");
 
     expect(wrapper.emitted("select-inbox-item")).toBeTruthy();
   });
