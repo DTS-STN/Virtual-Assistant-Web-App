@@ -27,9 +27,12 @@
         "
         tabindex="0"
         :aria-label="$t('conversationWindowDesc')"
-        @keyup.exact.enter="accessIndividualMessages(0)"
-        @keyup.shift.enter="accessIndividualMessages(-1)"
+        @keydown.exact.enter="accessIndividualMessages(0)"
+        @keydown.exact.shift.enter="accessIndividualMessages(-1)"
         aria-live="polite"
+        @keydown.exact.shift.tab.self="
+          shiftTabFromConversationWindowHandler($event)
+        "
       >
         <li>
           <p
@@ -96,7 +99,7 @@ export default {
     TextInput,
     ConversationFooter,
   },
-  setup() {
+  setup(_, context) {
     const conversationWindow = ref(null);
     const tabbable = ref(-1);
 
@@ -184,6 +187,13 @@ export default {
       setTimeout(scrollToBottom, 50);
     });
 
+    function shiftTabFromConversationWindowHandler(event) {
+      if (!isMobileDrawerOpen.value) {
+        event.preventDefault();
+        context.emit("returning-to-inbox");
+      }
+    }
+
     return {
       chatMessage,
       sendChatMessage,
@@ -198,6 +208,7 @@ export default {
       focusOnInput,
       resetConversationWindow,
       messageTimestamp,
+      shiftTabFromConversationWindowHandler,
     };
   },
 };

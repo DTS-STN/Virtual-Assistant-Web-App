@@ -9,6 +9,13 @@
     @keydown.prevent.exact.tab="nextElement($event)"
     aria-live="polite"
   >
+    <img
+      v-if="isLastMessage"
+      ref="chatReaderIcon"
+      :src="icons[senderIcon]"
+      alt=""
+      class="h-6 w-10 absolute left-0 bottom-0"
+    />
     <span class="sr-only">
       {{ (isUser ? $t("you") : senderName) + $t("said") + text }}
     </span>
@@ -28,13 +35,6 @@
     >
       {{ text }}
     </span>
-    <img
-      v-if="isLastMessage"
-      ref="chatReaderIcon"
-      :src="icons[senderIcon]"
-      alt=""
-      class="h-6 w-10 absolute left-0 bottom-0"
-    />
   </li>
 </template>
 <script>
