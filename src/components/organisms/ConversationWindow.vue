@@ -35,7 +35,11 @@
         "
       >
         <li>
+          <span class="sr-only">
+            {{ messageTimestamps.long }}
+          </span>
           <p
+            aria-hidden="true"
             class="
               text-center
               uppercase
@@ -45,7 +49,7 @@
               text-gray-dark
             "
           >
-            {{ messageTimestamp }}
+            {{ messageTimestamps.short }}
           </p>
         </li>
         <ConversationMessage
@@ -121,19 +125,30 @@ export default {
         ? null
         : messages[messages.length - 1].suggestedActions?.actions;
     });
-    const messageTimestamp = computed(() => {
+    const messageTimestamps = computed(() => {
       const msgs = chatMessage.value.messages;
       const lang = useI18n().locale.value;
-      const options = {
+      let date;
+      const shortOptions = {
         weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+      };
+      const longOptions = {
+        weekday: "long",
         hour: "2-digit",
         minute: "2-digit",
       };
       if (msgs?.length >= 1) {
         //create a timestamp using the oldest message sent by the bot
-        return new Date(msgs[0].timestamp).toLocaleString(lang, options);
+        date = new Date(msgs[0].timestamp);
+      } else {
+        date = new Date(); //use  current time if no messages exist
       }
-      return new Date().toLocaleString(lang, options); //return current time if no messages exist
+      return {
+        short: date.toLocaleString(lang, shortOptions),
+        long: date.toLocaleString(lang, longOptions),
+      };
     });
 
     function sendChatMessage(msg) {
@@ -207,7 +222,7 @@ export default {
       conversationWindow,
       focusOnInput,
       resetConversationWindow,
-      messageTimestamp,
+      messageTimestamps,
       shiftTabFromConversationWindowHandler,
     };
   },
