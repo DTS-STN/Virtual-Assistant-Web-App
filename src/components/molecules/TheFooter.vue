@@ -12,7 +12,7 @@
           "
         >
           <!-- Hidden heading -->
-          <h2 class="sr-only p-1">Site Footer Information</h2>
+          <h2 class="sr-only p-1">{{ $t("siteFooter") }}</h2>
           <date-modified />
           <div class="flex justify-end sm:p-2">
             <img

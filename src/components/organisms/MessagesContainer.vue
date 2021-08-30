@@ -21,8 +21,14 @@
         'inbox-transition fixed bg-white top-0 bottom-0 w-screen sm:left-0 sm:min-h-0 sm:h-vh-3/5 sm:relative sm:flex-auto sm:block sm:border sm:border-gray xl:h-vh-2/3',
       ]"
     >
-      <ConversationWindow v-if="inboxItemType === 'chat'" />
-      <message-list v-else-if="inboxItemType === 'email'" />
+      <ConversationWindow
+        v-if="inboxItemType === 'chat'"
+        @returning-to-inbox="returnToSelectedInboxItem"
+      />
+      <message-list
+        v-else-if="inboxItemType === 'email'"
+        @returning-to-inbox="returnToSelectedInboxItem"
+      />
       <!-- Default to empty window if no item is selected/while loading -->
       <ConversationLoading v-else />
     </div>
@@ -54,10 +60,14 @@ export default {
     const isMobileDrawerOpen = computed(
       () => store.getters["inbox/isMobileDrawerOpen"]
     );
+    function returnToSelectedInboxItem() {
+      document.getElementById("selected-inbox-item").focus();
+    }
 
     return {
       inboxItemType,
       isMobileDrawerOpen,
+      returnToSelectedInboxItem,
     };
   },
 };
