@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Default config options
-const baseDomain = process.env.BASE_URL;
+const baseDomain = import.meta.env.BASE_URL;
 
 /**
  * Create an Axios Client with defaults
