@@ -9,6 +9,9 @@ export default defineConfig({
     vue(),
     vueI18n({
       include: path.resolve(__dirname, './src/locales/**'),
-    })
-  ]
+    }) 
+  ],
+  define: {
+    'process.env': process.env
+  }
 })
