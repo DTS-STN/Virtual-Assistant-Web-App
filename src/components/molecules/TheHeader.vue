@@ -130,12 +130,12 @@ export default {
     watch(metaLang, () => {
       document
         .querySelector('meta[name="dcterms.language"]')
-        .setAttribute("content", metaLang.value);
+        ?.setAttribute("content", metaLang.value);
     });
     onMounted(() => {
       document
         .querySelector('meta[name="dcterms.language"]')
-        .setAttribute(
+        ?.setAttribute(
           "content",
           useI18n().locale.value !== "fr" ? "eng" : "fra"
         );
