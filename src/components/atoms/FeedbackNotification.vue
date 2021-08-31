@@ -2,7 +2,24 @@
   <div className="w-full bg-blue-mdlt">
     <div className=" mx-auto sm:container px-5 sm:px0 ">
       <div className="flex justify-between sm:mx-auto py-2 w-full">
-        <p class="font-body text-white text-sm py-1">{{ notification }}</p>
+        <p class="font-body text-white text-sm py-1">
+          <span
+            >{{ notification }}
+            <a
+              class="
+                underline
+                font-body
+                hover:text-gray-300
+                text-white
+                focus-visible:ring-white
+              "
+              data-cy="mailto-link"
+              href="mailto:experience@servicecanada.gc.ca"
+            >
+              experience@servicecanada.gc.ca
+            </a>
+          </span>
+        </p>
         <button
           @click="clearFeedbackNotificationClick"
           class="

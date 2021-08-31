@@ -46,7 +46,7 @@
   "thankYouFeedback": "Thank you for your feedback!",
   "feedbackValidationTooShortMessage": "Feedback too short",
   "feedbackValidationTooLongMessage": "Feedback must be under 2000 characters",
-  "serverError": "Sorry, we’re unable to receive your message right now. If the problem persists, please contact please contactplease contactplease contactplease contactplease contact",
+  "serverError": "Sorry, we’re unable to receive your message right now. If the problem persists, please contact ",
   "close": "Close",
   "noReply": "You will not receive a reply.",
   "enquiries": "for enquiries, please contact",
