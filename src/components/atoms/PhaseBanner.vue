@@ -66,7 +66,7 @@
     <FeedbackWidget v-if="feedbackOpen" :link="$t('privacyLink')" />
     <FeedbackNotification
       v-else-if="feedbackResponseMessage"
-      :notification="feedbackResponseMessage"
+      :notification="$t(feedbackResponseMessage)"
     />
   </div>
 </template>

@@ -2,7 +2,7 @@ import request from "../api";
 
 function post(feedback, route) {
   return request({
-    url: process.env.VITE_APP_FEEDBACK_API_URL,
+    url: import.meta.env.VITE_APP_FEEDBACK_API_URL,
     method: "POST",
     data: {
       project: "virtual-assistant",

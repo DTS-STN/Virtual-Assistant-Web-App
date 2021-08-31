@@ -44,10 +44,10 @@ const actions = {
 
     //Handle feedback request
     const response = await feedbackService.post(feedback, route);
-    console.log(response);
+    // console.log(response);
     context.commit(
       "setFeedbackResponseMessage",
-      response == "FEEDBACK SUBMITTED" ? "Success" : "Failed"
+      response == "FEEDBACK SUBMITTED" ? "thankYouFeedback" : "serverError"
     );
     context.commit("setFeedbackOpen", false);
   },

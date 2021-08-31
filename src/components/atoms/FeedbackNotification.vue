@@ -1,6 +1,6 @@
 <template>
   <div className="w-full bg-blue-mdlt">
-    <div className=" mx-auto sm:container px-3 sm:px0 ">
+    <div className=" mx-auto sm:container px-5 sm:px0 ">
       <div className="flex justify-between sm:mx-auto py-2 w-full">
         <p class="font-body text-white text-sm py-1">{{ notification }}</p>
         <button
@@ -26,7 +26,7 @@
               clip-rule="evenodd"
             />
           </svg>
-          <span className="underline pl-2 text-body">Close</span>
+          <span className="underline pl-2 text-body">{{ $t("close") }}</span>
         </button>
       </div>
     </div>
