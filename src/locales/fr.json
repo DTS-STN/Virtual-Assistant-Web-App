@@ -44,8 +44,8 @@
 
   "giveFeedback": "Donnez vos commentaires pour aider à améliorer ce service.",
   "thankYouFeedback": "Merci de vos commentaires!",
-  "feedbackValidationTooShortMessage": "(FR)Feedback too short",
-  "feedbackValidationTooLongMessage": "(FR)Feedback must be under 2000 characters",
+  "feedbackValidationTooShortMessage": "Ce champ est obligatoire",
+  "feedbackValidationTooLongMessage": "Maximum de 2000 caractères",
   "serverError": "Désolé, nous ne sommes pas en mesure de recevoir votre message pour le moment. Si le problème persiste, veuillez communiquer avec ",
   "close": "Fermer",
   "noReply": "Vous ne recevrez pas de réponse.",
@@ -59,7 +59,7 @@
   "submit": "Soumettre",
   "privacyLinkText": "Lire la politique en matière de protection des renseignements personnels.",
   "privacyLink": "https://alpha.service.canada.ca/fr/signup/privacy",
-  "expanded": "(FR)expanded",
-  "collapsed": "(FR)collapsed",
-  "siteFooter": "(FR) Site Footer Information"
+  "expanded": "élargi",
+  "collapsed": "effondré",
+  "siteFooter": "Informations sur le pied de page du site"
 }
