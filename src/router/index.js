@@ -67,8 +67,12 @@ router.beforeEach((to, from, next) => {
     document
       .getElementsByTagName("meta")
       ["dcterms.language"].setAttribute("content", "fra");
-    document.getElementsByName("meta")["dcterms.creator"].content =
-      "Emploi et Développement social Canada";
+    document
+      .getElementsByTagName("meta")
+      ["dcterms.creator"].setAttribute(
+        "content",
+        "Emploi et Développement social Canada"
+      );
   }
   next();
 });
