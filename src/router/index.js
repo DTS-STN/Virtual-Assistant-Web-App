@@ -63,7 +63,10 @@ router.beforeEach((to, from, next) => {
   if (language === "fr") {
     document
       .getElementsByTagName("meta")
-      ["dcterms.title"].setAttribute("content", "L’assistant virtuel Modele");
+      ["dcterms.title"].setAttribute(
+        "content",
+        "Prototype d'assistant virtuel - Laboratoires de Service Canada"
+      );
     document
       .getElementsByTagName("meta")
       ["dcterms.language"].setAttribute("content", "fra");
@@ -72,6 +75,23 @@ router.beforeEach((to, from, next) => {
       ["dcterms.creator"].setAttribute(
         "content",
         "Emploi et Développement social Canada"
+      );
+  }
+  if (language === "en") {
+    document
+      .getElementsByTagName("meta")
+      ["dcterms.title"].setAttribute(
+        "content",
+        "Virtual Assistant Prototype - Service Canada Labs"
+      );
+    document
+      .getElementsByTagName("meta")
+      ["dcterms.language"].setAttribute("content", "eng");
+    document
+      .getElementsByTagName("meta")
+      ["dcterms.creator"].setAttribute(
+        "content",
+        "Employment and Social Development Canada"
       );
   }
   next();
