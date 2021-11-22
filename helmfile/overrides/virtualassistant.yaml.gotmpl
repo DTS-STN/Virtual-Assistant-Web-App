@@ -1,8 +1,8 @@
 image:
   repository: "{{ requiredEnv "ACR_DOMAIN" }}/{{ requiredEnv "PROJECT" }}"
-  tag: "{{ requiredEnv "DOCKER_TAG" }}" 
+  tag: "{{ requiredEnv "DOCKER_TAG" }}"
   pullPolicy: Always
-{{ if (eq .Environment.Name "prototype")}}  
+{{ if (eq .Environment.Name "prototype")}}
 replicaCount: 4
 {{ else }}
 replicaCount: 1
@@ -22,8 +22,7 @@ ingress:
           - {{ requiredEnv "PROJECT" }}.{{ requiredEnv "BASE_DOMAIN_DEV" }}
       {{ else }}
           - {{ requiredEnv "PROJECT" }}-{{ .Environment.Name }}.{{ requiredEnv "BASE_DOMAIN_DEV" }}
-          - {{ requiredEnv "PROJECT" }}.{{ requiredEnv "BASE_DOMAIN_DEV" }}
-      {{ end }} 
+      {{ end }}
       annotations: {}
       # kubernetes.io/ingress.class: traefik
 
