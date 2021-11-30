@@ -10,7 +10,13 @@ export default {
 window.adobeDataLayer = window.adobeDataLayer || [];
 adobeDataLayer.push({
   event: "pageload",
-  page: document.title,
-  "dcterms.language": document.getElementsByTagName("meta")["dcterms.language"],
+  page: {
+    title: document.title,
+    language: document.getElementsByTagName("meta")["dcterms.language"],
+    creator:
+      "Employment and Social Development Canada/Emploi et Développement social Canada",
+    accessRights: "2",
+    service: "ESDC-EDSC_DC-CD",
+  },
 });
 </script>
