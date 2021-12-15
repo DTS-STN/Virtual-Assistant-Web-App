@@ -113,6 +113,7 @@ import Banner from "../atoms/Banner.vue";
 import PhaseBanner from "../atoms/PhaseBanner.vue";
 import { useI18n } from "vue-i18n";
 import { computed, watch, onMounted } from "vue";
+import { computed } from "vue";
 export default {
   name: "TheHeader",
   components: {
@@ -141,6 +142,10 @@ export default {
     //     );
     // });
     return { changeLanguageTo };
+    const metaLang = computed(() =>
+      useI18n().metaLang.value == "fra" ? "eng" : "fra"
+    );
+    return { changeLanguageTo, metaLang };
   },
 };
 </script>
