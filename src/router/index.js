@@ -70,6 +70,7 @@ router.afterEach((to, from) => {
     page: {
       title: document.title,
       language: to.params.lang,
+      eVar5: to.params.lang, 
       creator:
         "Employment and Social Development Canada/Emploi et Développement social Canada",
       accessRights: "2",

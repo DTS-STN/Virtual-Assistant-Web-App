@@ -124,10 +124,7 @@ export default {
     const changeLanguageTo = computed(() =>
       useI18n().locale.value == "fr" ? "en" : "fr"
     );
-    const metaLang = computed(() =>
-      useI18n().metaLang.value == "fra" ? "eng" : "fra"
-    );
-    return { changeLanguageTo, metaLang };
+    return { changeLanguageTo };
   },
 };
 </script>
