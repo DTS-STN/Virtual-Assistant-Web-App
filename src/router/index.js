@@ -60,40 +60,6 @@ router.beforeEach((to, from, next) => {
   const html = document.documentElement; // returns the html tag
   html.setAttribute("lang", language);
 
-  // if (language === "fr") {
-  //   document
-  //     .getElementsByTagName("meta")
-  //     ["dcterms.title"].setAttribute(
-  //       "content",
-  //       "Prototype d'assistant virtuel - Laboratoires de Service Canada"
-  //     );
-  //   document
-  //     .getElementsByTagName("meta")
-  //     ["dcterms.language"].setAttribute("content", "fra");
-  //   document
-  //     .getElementsByTagName("meta")
-  //     ["dcterms.creator"].setAttribute(
-  //       "content",
-  //       "Emploi et Développement social Canada"
-  //     );
-  // }
-  // if (language === "en") {
-  //   document
-  //     .getElementsByTagName("meta")
-  //     ["dcterms.title"].setAttribute(
-  //       "content",
-  //       "Virtual Assistant Prototype - Service Canada Labs"
-  //     );
-  //   document
-  //     .getElementsByTagName("meta")
-  //     ["dcterms.language"].setAttribute("content", "eng");
-  //   document
-  //     .getElementsByTagName("meta")
-  //     ["dcterms.creator"].setAttribute(
-  //       "content",
-  //       "Employment and Social Development Canada"
-  //     );
-  // }
   next();
 });
 
@@ -103,7 +69,7 @@ router.afterEach((to, from) => {
     event: "pageload",
     page: {
       title: document.title,
-      language: i18n.global.locale.value,
+      language: to.params.lang,
       creator:
         "Employment and Social Development Canada/Emploi et Développement social Canada",
       accessRights: "2",
