@@ -70,11 +70,11 @@ const actions = {
     };
 
     const senderName =
-      i18n.global.locale.value === "fr"
+      i18n.global.locale.value === "fra"
         ? "Assistant virtuel"
         : "Virtual Assistant";
     const senderIconAltText =
-      i18n.global.locale.value === "fr"
+      i18n.global.locale.value === "fra"
         ? "Assistant virtuel icon"
         : "Virtual Assistant icon";
 
