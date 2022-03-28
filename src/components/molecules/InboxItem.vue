@@ -28,22 +28,24 @@
         class="w-12 h-12 md:w-12 md:h-12 bg-gray-infomd rounded-full"
       />
     </div>
-    <div class="truncate">
+    <div class="flex-1 truncate">
       <span :id="'sender-name-label-' + indexNum" class="hidden">
         {{ $t("inboxFor") }}
       </span>
-      <h2
+
+      <div
         :id="'sender-name-' + indexNum"
         :aria-labelledby="
           'sender-name-label-' + indexNum + ' sender-name-' + indexNum
         "
         :class="[
           !inboxItem.dayRead ? 'font-bold' : '',
-          'font-body md:text-lg truncate overflow-ellipsis text-gray-dark pl-1',
+          'font-body truncate overflow-ellipsis text-gray-dark pl-1 md:text-sm',
         ]"
       >
         {{ inboxItem.senderName }}
-      </h2>
+      </div>
+
       <span class="sr-only">
         {{
           (inboxItem.selected === true
