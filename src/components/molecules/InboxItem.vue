@@ -40,7 +40,7 @@
         "
         :class="[
           !inboxItem.dayRead ? 'font-bold' : '',
-          'font-body truncate overflow-ellipsis text-gray-dark pl-1 md:text-sm',
+          'font-body text-base truncate overflow-ellipsis text-gray-dark pl-1 md:text-sm sm:text-xs',
         ]"
       >
         {{ inboxItem.senderName }}
