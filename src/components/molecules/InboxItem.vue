@@ -33,7 +33,7 @@
         {{ $t("inboxFor") }}
       </span>
 
-      <div
+      <h2
         :id="'sender-name-' + indexNum"
         :aria-labelledby="
           'sender-name-label-' + indexNum + ' sender-name-' + indexNum
@@ -44,7 +44,7 @@
         ]"
       >
         {{ inboxItem.senderName }}
-      </div>
+      </h2>
 
       <span class="sr-only">
         {{
