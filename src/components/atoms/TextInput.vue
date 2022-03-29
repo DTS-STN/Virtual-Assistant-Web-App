@@ -1,34 +1,35 @@
 <template>
-  <input
-    ref="input"
-    id="send-message-input"
-    type="text"
-    :placeholder="$t('writeSomething')"
-    class="
-      w-full
-      border-t border-b border-gray-200
-      placeholder-gray-mediumlt
-      text-gray-dark
-      font-body
-      p-3
-      bg-clip-padding
-    "
-    v-model="text"
-    :aria-label="$t('writeSomething')"
-    @keydown.up.prevent="moveToMostRecentMessage"
-    @blur="resetChatWindow"
-    @keyup.enter="sendText"
-    @input="checkSendBtnActive"
-  />
+  <div className="grid place-content-center gap-y-1 mt-2">
+    <chat-option-button
+      v-for="(option, index) in buttonOptions"
+      :key="index"
+      :text="option?.value ?? option"
+      @send-button="sendBtnText"
+    />
+  </div>
+
   <div class="flex flex-row bg-gray-infolt text-gray-dark">
-    <div class="w-full min-h-12">
-      <chat-option-button
-        v-for="(option, index) in buttonOptions"
-        :key="index"
-        :text="option?.value ?? option"
-        @send-button="sendBtnText"
-      />
-    </div>
+    <input
+      ref="input"
+      id="send-message-input"
+      type="text"
+      :placeholder="$t('writeSomething')"
+      class="
+        w-full
+        border-t border-b border-gray-200
+        placeholder-gray-mediumlt
+        text-gray-dark
+        font-body
+        p-3
+        bg-clip-padding
+      "
+      v-model="text"
+      :aria-label="$t('writeSomething')"
+      @keydown.up.prevent="moveToMostRecentMessage"
+      @blur="resetChatWindow"
+      @keyup.enter="sendText"
+      @input="checkSendBtnActive"
+    />
     <div class="relative flex w-12 flex-shrink-0">
       <button
         class="cursor-pointer absolute right-0 top-0"

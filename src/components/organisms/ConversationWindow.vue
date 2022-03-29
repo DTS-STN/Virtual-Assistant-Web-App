@@ -64,6 +64,7 @@
           :senderIcon="chatMessage.senderIcon"
           :isLastMessage="index === chatMessage.messages.length - 1"
         />
+
         <ConversationFooter
           :tabindex="tabbable"
           @focusout="checkFocusingOutsideWindow($event)"
