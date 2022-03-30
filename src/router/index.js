@@ -60,6 +60,16 @@ router.beforeEach((to, from, next) => {
   const html = document.documentElement; // returns the html tag
   html.setAttribute("lang", language);
 
+  if (language === "fr") {
+    html.setAttribute("lang", "fra");
+  }
+  if (language === "en") {
+    html.setAttribute("lang", "eng");
+  }
+
+  // set the current language for vuex-i18n. note that translation data
+  // for the language might need to be loaded first
+  i18n.global.locale.value = language;
   next();
 });
 

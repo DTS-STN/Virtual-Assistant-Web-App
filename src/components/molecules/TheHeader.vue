@@ -112,7 +112,7 @@ import Menu from "../atoms/Menu.vue";
 import Banner from "../atoms/Banner.vue";
 import PhaseBanner from "../atoms/PhaseBanner.vue";
 import { useI18n } from "vue-i18n";
-import { computed } from "vue";
+import { computed, watch, onMounted } from "vue";
 export default {
   name: "TheHeader",
   components: {
@@ -124,10 +124,23 @@ export default {
     const changeLanguageTo = computed(() =>
       useI18n().locale.value == "fr" ? "en" : "fr"
     );
-    const metaLang = computed(() =>
-      useI18n().metaLang.value == "fra" ? "eng" : "fra"
-    );
-    return { changeLanguageTo, metaLang };
+    // const metaLang = computed(() => {
+    //   useI18n().lango.value !== "fr" ? "eng" : "fra";
+    // });
+    // watch(metaLang, () => {
+    //   document
+    //     .querySelector('meta[name="dcterms.language"]')
+    //     ?.setAttribute("content", metaLang.value);
+    // });
+    // onMounted(() => {
+    //   document
+    //     .querySelector('meta[name="dcterms.language"]')
+    //     ?.setAttribute(
+    //       "content",
+    //       useI18n().locale.value !== "fr" ? "eng" : "fra"
+    //     );
+    // });
+    return { changeLanguageTo };
   },
 };
 </script>
