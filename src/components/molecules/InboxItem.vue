@@ -32,6 +32,7 @@
       <span :id="'sender-name-label-' + indexNum" class="hidden">
         {{ $t("inboxFor") }}
       </span>
+
       <h2
         :id="'sender-name-' + indexNum"
         :aria-labelledby="
@@ -39,11 +40,12 @@
         "
         :class="[
           !inboxItem.dayRead ? 'font-bold' : '',
-          'font-body md:text-lg truncate overflow-ellipsis text-gray-dark pl-1',
+          'font-body text-base truncate overflow-ellipsis text-gray-dark pl-1 md:text-sm sm:text-xs',
         ]"
       >
         {{ inboxItem.senderName }}
       </h2>
+
       <span class="sr-only">
         {{
           (inboxItem.selected === true
