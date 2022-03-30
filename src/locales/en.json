@@ -41,5 +41,25 @@
 
   "backToProjectsLink": "https://alpha.service.canada.ca/projects",
   "homeTitle": "Service Canada Labs – Virtual Assistant",
+
+  "giveFeedback": "Give feedback to help improve this service",
+  "thankYouFeedback": "Thank you for your feedback!",
+  "feedbackValidationTooShortMessage": "Feedback - This field is required",
+  "feedbackValidationTooLongMessage": "Maximum of 2000 characters",
+  "serverError": "Sorry, we’re unable to receive your message right now. If the problem persists, please contact ",
+  "close": "Close",
+  "noReply": "You will not receive a reply.",
+  "enquiries": "For enquiries, please contact",
+  "confidential": "Your feedback is confidential and anonymous. ",
+  "improveService": "Help us improve this service",
+  "doBetter": "How can we do better?",
+  "doBetterBody": "Do not include any personal, medical or finacial details, such as your name, social insurance number (SIN), home or business address, phone number or any case or file numbers.",
+  "max2000": "Maximum of 2000 characters",
+  "feedbackRequired": "This field is a required field",
+  "submit": "Submit",
+  "privacyLinkText": "Review the privacy policy.",
+  "privacyLink": "https://alpha.service.canada.ca/signup/privacy",
+  "expanded": "expanded",
+  "collapsed": "collapsed",
   "siteFooter": "Site Footer Information"
 }
